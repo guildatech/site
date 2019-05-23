@@ -1,91 +1,145 @@
-import React from 'react'
-import Link from 'next/link'
-import Head from '../components/head'
-import Nav from '../components/nav'
+import React from "react";
+import Link from "next/link";
+import Head from "../components/head";
+import Nav from "../components/nav";
 
 const Home = () => (
   <div>
-    <Head title="Home" />
+    <Head title="GuidaTech" />
     <Nav />
 
-    <div className="hero">
-      <h1 className="title">Welcome to Next!</h1>
-      <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.
-      </p>
+    <aside>
+      <nav>
+        <ol>
+          <li>Início</li>
+          <li>Posts</li>
+          <li>Projetos</li>
+          <li>Eventos</li>
+          <li> Jobs </li>
+        </ol>
+      </nav>
+    </aside>
+    <main>
+      <section>
+        <div className="hero stretch">
+          <h3 className="title">
+            Boas Vindas a Guilda<strong>Tech</strong>
+          </h3>
+          <p className="description">
+            Somos uma comunidade inclusiva em que assustos <br />
+	   de todos os tipos são
+            tratados,
+            <br /> inclusive <strong>Programação</strong>
+          </p>
 
-      <div className="row">
-        <Link href="https://github.com/zeit/next.js#getting-started">
-          <a className="card">
-            <h3>Getting Started &rarr;</h3>
-            <p>Learn more about Next on Github and in their examples</p>
-          </a>
-        </Link>
-        <Link href="https://open.segment.com/create-next-app">
-          <a className="card">
-            <h3>Examples &rarr;</h3>
-            <p>
-              Find other example boilerplates on the{' '}
-              <code>create-next-app</code> site
-            </p>
-          </a>
-        </Link>
-        <Link href="https://github.com/segmentio/create-next-app">
-          <a className="card">
-            <h3>Create Next App &rarr;</h3>
-            <p>Was this tool helpful? Let us know how we can improve it</p>
-          </a>
-        </Link>
-      </div>
-    </div>
+        </div>
+          <div className="badge stretch" >
+<span className="braces left">  </span>
+          <svg
+            width="150"
+            height="150"
+            viewBox="0 0 150 150"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M149.752 46.8546C147.562 22.7551 130.504 5.27046 109.157 5.27046C94.935 5.27046 81.9131 12.9238 74.5858 25.1899C67.3248 12.7651 54.8366 5.26758 40.8425 5.26758C19.498 5.26758 2.43739 22.7522 0.25072 46.8517C0.0776336 47.9162 -0.632023 53.5184 1.52579 62.6545C4.63559 75.8322 11.8187 87.8185 22.2933 97.3094L74.5512 144.732L127.706 97.3123C138.181 87.8185 145.364 75.8351 148.474 62.6545C150.632 53.5213 149.922 47.9191 149.752 46.8546Z"
+              fill="#E9B625"
+            />
+          </svg>
+<span className="braces right"> </span>
+ </div>
+      </section>
+    </main>
 
     <style jsx>{`
-      .hero {
+
+.stretch {
+	align-items: stretch;
+align-items: center;
+} 
+
+.badge svg {
+    margin: auto;
+    height: 100%;
+    }
+
+      aside {
+        width: 150px;
+        height: 100vh;
+        padding: 20px 20px 20px 0px;
+        background: #fff;
+        position: fixed;
+        overflow: auto;
+      }
+      aside ol {
+        list-style: none;
+        font-size: 18px;
         width: 100%;
+        padding-left: 0px;
+        margin-left: 0px;
+      }
+
+      aside li {
+        width: 100%;
+        color: #000;
+        font-weight: 700;
+        background: white;
+        padding: 15px 10px 15px 25px;
+        margin: 5px 0px;
+      }
+
+      aside li:first-letter {
+        color: #e9b625;
+      }
+
+      aside li:hover {
+        color: white !important;
+        background: #e9b625;
+      }
+      aside li:hover:first-letter {
+        color: #fff;
+      }
+
+      main {
+        padding-left: 220px;
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          width: 100%;
+        }
+        .badge {
+          display: none;
+        }
+      }
+      
+      main >  section {
+ 		 display: flex;
+		flex-direction: row;
+      }
+      .hero,
+      .badge {
+     flex-direction: row;
+      }
+      .hero {
+flex-grow: 2;
         color: #333;
+      }
+      .badge {
+flex-grow:1;
       }
       .title {
         margin: 0;
         width: 100%;
         padding-top: 80px;
         line-height: 1.15;
-        font-size: 48px;
       }
       .title,
       .description {
-        text-align: center;
-      }
-      .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
+        font-size: 22px;
       }
     `}</style>
   </div>
-)
+);
 
-export default Home
+export default Home;
