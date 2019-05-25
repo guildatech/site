@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 const links = [
-  { href: "https://github.com/guildatech/", label: "Github" , icon:'static/icons8-github-24.png'},
-  { href: "https://t.me/guildatech", label: "Telegram" , icon : 'static/icons8-telegram-24.png'}
+  { href: "https://github.com/guildatech/", label: "Github" , icon:'../static/icons8-github-24.png'},
+  { href: "https://t.me/guildatech", label: "Telegram" , icon : '../static/icons8-telegram-24.png'}
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`;
   return link;
