@@ -3,27 +3,20 @@ import Link from "next/link";
 import Head from "../components/head";
 import Nav from "../components/nav";
 import Button from "../components/button";
+import Menu from "../components/menu";
 
 const saibaMais = () => {
   alert("hi");
 };
 
+
 const Home = () => (
   <div>
     <Head title="GuidaTech" />
     <Nav />
+    <Menu/>
 
-    <aside>
-      <nav>
-        <ol>
-          <li>Início</li>
-          <li>Posts</li>
-          <li>Projetos</li>
-          <li>Eventos</li>
-          <li> Jobs </li>
-        </ol>
-      </nav>
-    </aside>
+
     <main>
       <section>
         <div className="capa esticar-largura">
@@ -37,7 +30,6 @@ const Home = () => (
           </p>
 
           <Button onClick={saibaMais} title="Saiba Mais">
-            {" "}
           </Button>
         </div>
         <div className="simbolo esticar-largura">
@@ -56,47 +48,6 @@ const Home = () => (
         align-items: center;
       }
 
-      .badge svg {
-        margin: auto;
-        height: 100%;
-      }
-
-      aside {
-        width: 150px;
-        height: 100vh;
-        padding: 20px 20px 20px 0px;
-        background: #fff;
-        position: fixed;
-        overflow: auto;
-      }
-      aside ol {
-        list-style: none;
-        font-size: 18px;
-        width: 100%;
-        padding-left: 0px;
-        margin-left: 0px;
-      }
-
-      aside li {
-        width: 100%;
-        color: #000;
-        font-weight: 700;
-        background: white;
-        padding: 15px 10px 15px 25px;
-        margin: 5px 0px;
-      }
-
-      aside li:first-letter {
-        color: #e9b625;
-      }
-
-      aside li:hover {
-        color: white !important;
-        background: #e9b625;
-      }
-      aside li:hover:first-letter {
-        color: #fff;
-      }
 
       main {
         padding-left: 220px;
@@ -140,24 +91,6 @@ const Home = () => (
       .descricao {
         font-size: 22px;
       }
-      /*
-      .simbolo:after,
-      .simbolo:before {
-        position: absolute;
-        font-size: 105px;
-        height: 100px;
-        width: 30px;
-        top: -15px;
-      }
-
-      .simbolo:after {
-        content: "}";
-        left: 125px;
-      }
-      .simbolo:before {
-        content: "{";
-        left: -45px;
-      }*/
     `}</style>
   </div>
 );
