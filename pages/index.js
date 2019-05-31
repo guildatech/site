@@ -23,7 +23,7 @@ const Home = () => (
       <section>
         <div className="hero stretch">
           <h3 className="title">
-            Boas Vindas a Guilda<strong>Tech</strong>
+            Boas-vindas à Guilda<strong>Tech</strong>
           </h3>
           <p className="description">
             Somos uma comunidade inclusiva em que assuntos <br />
