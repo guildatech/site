@@ -5,7 +5,7 @@ import Nav from "../components/nav";
 
 const Home = () => (
   <div>
-    <Head title="GuidaTech" />
+    <Head title="GuildaTech" />
     <Nav />
 
     <aside>
@@ -26,7 +26,7 @@ const Home = () => (
             Boas Vindas a Guilda<strong>Tech</strong>
           </h3>
           <p className="description">
-            Somos uma comunidade inclusiva em que assustos <br />
+            Somos uma comunidade inclusiva em que assuntos <br />
 	   de todos os tipos são
             tratados,
             <br /> inclusive <strong>Programação</strong>
