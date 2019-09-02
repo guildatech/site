@@ -35,7 +35,6 @@ const Eventos = () => (
         display: flex;
         flex-direction: row;
       }
-
     `}</style>
   </div>
 );

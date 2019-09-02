@@ -1,44 +1,35 @@
 import React, { Component } from "react";
 import Link from "next/link";
-import { Router, Route } from "react-router";
-import Artigos from "../pages/artigos";
-import Eventos from "../pages/eventos";
-import Inicio from "../pages/inicio";
-import Jobs from "../pages/jobs";
-import Projetos from "../pages/projetos";
 
 export default class Menu extends Component {
   constructor(props) {
     super(props);
     const menus = [
-      { href: "/", label: "Início", component: Inicio },
-      { href: "/artigos", label: "Artigos", component: Artigos },
-      { href: "/projetos", label: "Projetos", component: Projetos },
-      { href: "/eventos", label: "Eventos", component: Eventos },
-      { href: "/jobs", label: "Jobs", component: Jobs }
+      { href: "/", label: "Início" },
+      { href: "./artigos", label: "Artigos" },
+      { href: "./projetos", label: "Projetos" },
+      { href: "./eventos", label: "Eventos" },
+      { href: "./jobs", label: "Jobs" }
     ].map(menu => {
       menu.key = `menu-${menu.href}-${menu.label}`;
       return menu;
     });
 
-    this.state = { menus: menus, props: props };
-  }
-
-  componentDidUpdate(prevProps) {
-    console.log("menu", prevPropsp);
+    this.state = { menus: menus };
   }
 
   render() {
     return (
-      <aside className="aside-menu">
+      <aside className={this.props.menuAberto ? "aside-open" : "aside-close"}>
         <nav>
           <ol>
             {this.state.menus.map(({ key, href, label }) => (
-              <Link href={href}>
-                <li key={key}>
+              <li key={key}>
+                {" "}
+                <Link href={href}>
                   <a>{label} </a>
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
           </ol>
         </nav>
@@ -51,6 +42,7 @@ export default class Menu extends Component {
             background: #fff;
             position: fixed;
             overflow: auto;
+            z-index: 10;
           }
           aside ol {
             list-style: none;
@@ -91,16 +83,22 @@ export default class Menu extends Component {
           aside li:hover:first-letter {
             color: #000;
           }
+          aside {
+            transition: left 300ms;
+          }
 
           @media (max-width: 768px) {
             aside {
               position: absolute;
               left: -150px;
             }
-          }
+            .aside-open {
+              left: -150px;
+            }
 
-          .aside-menu {
-            background: ${this.state.props.menuAberto ? "red" : "blue"};
+            .aside-open {
+              left: 0px;
+            }
           }
         `}</style>
       </aside>

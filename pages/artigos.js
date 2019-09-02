@@ -6,16 +6,15 @@ import Button from "../components/button";
 import Menu from "../components/menu";
 import Breadcrumb from "../components/breadcrumb";
 
-
 const Artigos = () => (
   <div>
     <Head title="GuidaTech" />
     <Nav />
-    <Menu/>
+    <Menu />
     <main>
-    <section>
-    	<Breadcrumb path="Artigos"/>
-    </section>
+      <section>
+        <Breadcrumb path="Artigos" />
+      </section>
     </main>
     <style jsx>{`
       .esticar-largura {
@@ -39,8 +38,8 @@ const Artigos = () => (
       .capa,
       .simbolo {
         flex-direction: row;
-  	align-items: center;
-  	justify-content: center;
+        align-items: center;
+        justify-content: center;
       }
       .capa {
         flex-grow: 2;

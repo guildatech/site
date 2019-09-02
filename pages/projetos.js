@@ -35,7 +35,6 @@ const Projetos = () => (
         display: flex;
         flex-direction: row;
       }
-
     `}</style>
   </div>
 );
