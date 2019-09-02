@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import {Router,Route} from 'react-router';
+import { Router, Route } from "react-router";
 import Artigos from "../pages/artigos";
 import Eventos from "../pages/eventos";
 import Inicio from "../pages/inicio";
@@ -8,11 +8,11 @@ import Jobs from "../pages/jobs";
 import Projetos from "../pages/projetos";
 
 const menus = [
-  { href: "/", label: "Início" , component: Inicio},
-  { href: "/artigos", label: "Artigos" , component:Artigos},
-  { href: "/projetos", label: "Projetos" , component: Projetos},
-  { href: "/eventos", label: "Eventos" , component: Eventos},
-  { href: "/jobs", label: "Jobs" , component: Jobs}
+  { href: "/", label: "Início", component: Inicio },
+  { href: "/artigos", label: "Artigos", component: Artigos },
+  { href: "/projetos", label: "Projetos", component: Projetos },
+  { href: "/eventos", label: "Eventos", component: Eventos },
+  { href: "/jobs", label: "Jobs", component: Jobs }
 ].map(menu => {
   menu.key = `menu-${menu.href}-${menu.label}`;
   return menu;
@@ -31,7 +31,6 @@ const Menu = props => (
         ))}
       </ol>
     </nav>
-
 
     <style jsx>{`
       aside {
@@ -81,17 +80,17 @@ const Menu = props => (
       aside li:hover:first-letter {
         color: #000;
       }
-      
+
       @media (max-width: 768px) {
-      aside {
-      position:absolute;
-      left:-150px}
+        aside {
+          position: absolute;
+          left: -150px;
+        }
       }
-      
+
       .aside-menu {
-        background : ${props.estadoMenu ? 'red' : 'blue'}
+        background: ${props.estadoMenu ? "red" : "blue"};
       }
-      
     `}</style>
   </aside>
 );
