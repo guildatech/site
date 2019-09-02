@@ -25,7 +25,6 @@ export default class Menu extends Component {
           <ol>
             {this.state.menus.map(({ key, href, label }) => (
               <li key={key}>
-                {" "}
                 <Link href={href}>
                   <a>{label} </a>
                 </Link>

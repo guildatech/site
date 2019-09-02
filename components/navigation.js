@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 import Nav from "../components/nav";
 import Menu from "../components/menu";
@@ -17,11 +17,10 @@ export default class Navigation extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <Nav updateMenu={this.updateMenu} />
         <Menu menuAberto={this.state.menuAberto} />
-        <div className={this.state.menuAberto ? "overlay show" : "overlay"}>
-          {" "}
+        <div className={this.state.menuAberto ? "overlay show" : "overlay"}>      
         </div>
 
         <style jsx>{`
@@ -44,7 +43,7 @@ export default class Navigation extends Component {
             }
           }
         `}</style>
-      </div>
+      </Fragment>
     );
   }
 }

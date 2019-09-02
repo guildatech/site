@@ -10,16 +10,16 @@ const saibaMais = () => {
 
 const Home = () => (
   <div>
-    <Head title="GuidaTech" />
+    <Head title="GuildaTech" />
     <Navigation />
 
     <main>
       <div className="capa esticar-largura">
         <h3 className="titulo">
-          Boas Vindas a Guilda<strong>Tech</strong>
+          Boas Vindas à Guilda<strong>Tech</strong>
         </h3>
         <p className="descricao">
-          Somos uma comunidade inclusiva em que assustos <br />
+          Somos uma comunidade inclusiva em que assuntos <br />
           de todos os tipos são tratados,
           <br /> inclusive <strong>Programação</strong>
         </p>
