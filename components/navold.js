@@ -1,11 +1,7 @@
-import React, {Component} from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import Link from "next/link";
 
-
-export default class Nav extends Component {
-  constructor(props) {
-    super(props);
 
 const links = [
   { href: "https://github.com/guildatech/", label: "Github" , icon:'../static/icons8-github-24.png'},
@@ -14,22 +10,15 @@ const links = [
   link.key = `nav-link-${link.href}-${link.label}`;
   return link;
 });
-this.state = {links, props}
-}
-componentDidUpdate(prevProps){
-    console.log('nav', prevProps)
-}
 
-
- asideNav = () =>{
-  this.setState({props: { menuAberto : true}})
+const asideNav = (props) =>{
 }
-render() {
+const Nav = props => {
   return (
   <nav>
     <ul>    
     <li id="menu">
-    <input onClick={this.asideNav} type="checkbox" id="checkboxmenu" name="checkboxmenu"/>
+    <input onClick={asideNav(props)} type="checkbox" id="checkboxmenu" name="checkboxmenu"/>
     <label className="guilda-menu" >
 	<span></span>
 	<span></span>
@@ -48,7 +37,7 @@ render() {
         </Link>
       </li>
       <ul className="network-links">
-        {this.state.links.map(({ key, href, label ,icon}) => (
+        {links.map(({ key, href, label ,icon}) => (
           <li key={key}>
             <Link href={href}>
               <a><img alt={label} src={icon}/></a>
@@ -192,5 +181,5 @@ render() {
     `}</style>
   </nav>
 )};
-}
 
+export default Nav;

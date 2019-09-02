@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import Link from "next/link";
 import {Router,Route} from 'react-router';
 import Artigos from "../pages/artigos";
@@ -7,13 +7,7 @@ import Inicio from "../pages/inicio";
 import Jobs from "../pages/jobs";
 import Projetos from "../pages/projetos";
 
-
-export default class Menu extends Component {
-
-
-  constructor(props) {
-    super(props);
-    const menus = [
+const menus = [
   { href: "/", label: "Início" , component: Inicio},
   { href: "/artigos", label: "Artigos" , component:Artigos},
   { href: "/projetos", label: "Projetos" , component: Projetos},
@@ -24,19 +18,11 @@ export default class Menu extends Component {
   return menu;
 });
 
-    this.state = {menus: menus, props:props};
-  }
-
-componentDidUpdate(prevProps){
-    console.log('menu', prevPropsp)
-}
-
-render () {
-  return  (
+const Menu = props => (
   <aside className="aside-menu">
     <nav>
       <ol>
-        {this.state.menus.map(({ key, href, label }) => (
+        {menus.map(({ key, href, label }) => (
           <Link href={href}>
             <li key={key}>
               <a>{label} </a>
@@ -103,12 +89,11 @@ render () {
       }
       
       .aside-menu {
-        background : ${this.state.props.menuAberto ? 'red' : 'blue'}
+        background : ${props.estadoMenu ? 'red' : 'blue'}
       }
       
     `}</style>
   </aside>
-)
-}
-};
+);
 
+export default Menu;
