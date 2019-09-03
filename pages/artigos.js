@@ -7,8 +7,7 @@ export default class Artigos extends Component {
     return (
       <Fragment>
         <Navigation />
-        <Main path="Artigos" >
-        </Main>
+        <Main path="Artigos"></Main>
       </Fragment>
     );
   }

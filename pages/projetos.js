@@ -7,8 +7,7 @@ export default class Projetos extends Component {
     return (
       <Fragment>
         <Navigation />
-        <Main   path="Projetos" >
-        </Main>
+        <Main path="Projetos"></Main>
       </Fragment>
     );
   }

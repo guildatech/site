@@ -49,7 +49,6 @@ const Home = () => (
         align-items: center;
       }
 
-
       @media (max-width: 768px) {
         .capa {
           width: 100%;
@@ -58,8 +57,7 @@ const Home = () => (
           display: none;
         }
         .titulo {
-
-        padding-top: 8px !important;
+          padding-top: 8px !important;
         }
       }
 

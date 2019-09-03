@@ -7,8 +7,7 @@ export default class Eventos extends Component {
     return (
       <Fragment>
         <Navigation />
-        <Main path="Eventos" >
-        </Main>
+        <Main path="Eventos"></Main>
       </Fragment>
     );
   }

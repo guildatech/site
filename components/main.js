@@ -10,16 +10,15 @@ export default class Main extends Component {
   render() {
     return (
       <Fragment>
-          <section>
-            <Breadcrumb path={this.props.path} />
         <main>
-            {this.props.children}
-          
+          <Breadcrumb path={this.props.path} />
+          <section>{this.props.children}</section>
         </main>
-</section>
         <style jsx>{`
           main {
             padding-left: 220px;
+          }
+          main > section {
             display: flex;
             flex-direction: row;
           }

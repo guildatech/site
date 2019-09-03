@@ -7,8 +7,7 @@ export default class Jobs extends Component {
     return (
       <Fragment>
         <Navigation />
-        <Main  path="Jobs" >
-        </Main>
+        <Main path="Jobs"></Main>
       </Fragment>
     );
   }
