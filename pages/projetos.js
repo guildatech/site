@@ -1,42 +1,15 @@
-import React from "react";
-import Link from "next/link";
-import Head from "../components/head";
-import Nav from "../components/nav";
-import Button from "../components/button";
-import Menu from "../components/menu";
-import Breadcrumb from "../components/breadcrumb";
+import React, { Component, Fragment } from "react";
+import Navigation from "../components/navigation";
+import Main from "../components/main";
 
-const Projetos = () => (
-  <div>
-    <Head title="GuidaTech" />
-    <Nav />
-    <Menu />
-    <main>
-      <section>
-        <Breadcrumb path="Projetos" />
-      </section>
-    </main>
-    <style jsx>{`
-      .esticar-largura {
-        align-items: stretch;
-        align-items: center;
-      }
-      main {
-        padding-left: 220px;
-      }
-
-      @media (max-width: 768px) {
-        .capa {
-          width: 100%;
-        }
-      }
-
-      main > section {
-        display: flex;
-        flex-direction: row;
-      }
-    `}</style>
-  </div>
-);
-
-export default Projetos;
+export default class Projetos extends Component {
+  render() {
+    return (
+      <Fragment>
+        <Navigation />
+        <Main   path="Projetos" >
+        </Main>
+      </Fragment>
+    );
+  }
+}

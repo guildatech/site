@@ -1,8 +1,7 @@
 import React from "react";
-import Link from "next/link";
-import Head from "../components/head";
 import Navigation from "../components/navigation";
 import Button from "../components/button";
+import Main from "../components/main";
 
 const saibaMais = () => {
   alert("hi");
@@ -10,10 +9,9 @@ const saibaMais = () => {
 
 const Home = () => (
   <div>
-    <Head title="GuildaTech" />
     <Navigation />
 
-    <main>
+    <Main>
       <div className="capa esticar-largura">
         <h3 className="titulo">
           Boas Vindas à Guilda<strong>Tech</strong>
@@ -44,18 +42,13 @@ const Home = () => (
           />
         </svg>
       </div>
-    </main>
+    </Main>
     <style jsx>{`
       .esticar-largura {
         align-items: stretch;
         align-items: center;
       }
 
-      main {
-        padding-left: 220px;
-        display: flex;
-        flex-direction: row;
-      }
 
       @media (max-width: 768px) {
         .capa {
@@ -64,8 +57,9 @@ const Home = () => (
         .simbolo {
           display: none;
         }
-        main {
-          padding-left: 20px;
+        .titulo {
+
+        padding-top: 8px !important;
         }
       }
 

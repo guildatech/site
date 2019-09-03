@@ -56,7 +56,7 @@ export default class Nav extends Component {
               <li key={key}>
                 <Link href={href}>
                   <a>
-                    <img  aria-label={label} alt={label} src={icon} />
+                    <img aria-label={label} alt={label} src={icon} />
                   </a>
                 </Link>
               </li>

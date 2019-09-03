@@ -1,11 +1,19 @@
-import React from "react";
+import React, { Component, Fragment } from "react";
 import Link from "next/link";
 import { string } from "prop-types";
 
-const Breadcrumb = props => (
+export default class Breadcrumb extends Component {
+constructor(props) {
+    super(props);
+  }
+
+  render() {
+   
+    return  this.props.path ?  (
+
   <div>
     <small>
-      Voce está em <b>{props.path}</b>
+      Voce está em <b>{this.props.path}</b>
     </small>
     <style jsx>{`
       small: {
@@ -13,9 +21,6 @@ const Breadcrumb = props => (
       }
     `}</style>
   </div>
-);
-
-Breadcrumb.propTypes = {
-  path: string
-};
-export default Breadcrumb;
+    ) : null;
+  }
+}
