@@ -24,11 +24,11 @@ export default class Menu extends Component {
         <nav>
           <ol>
             {this.state.menus.map(({ key, href, label }) => (
-              <li key={key}>
-                <Link href={href}>
+              <Link key={key} href={href}>
+                <li key={key}>
                   <a>{label} </a>
-                </Link>
-              </li>
+                </li>
+              </Link>
             ))}
           </ol>
         </nav>

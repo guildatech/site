@@ -29,8 +29,8 @@ export default class Navigation extends Component {
         <style jsx>{`
           .overlay {
             position: absolute;
-            width: 100vw;
-            height: 100vh;
+            width: 0vw;
+            height: 0vh;
             background: #000;
             opacity: 0;
             transition: opacity 400ms;
@@ -38,6 +38,8 @@ export default class Navigation extends Component {
           }
           .overlay.show {
             opacity: 0.2;
+            width: 100vw;
+            height: 100vh;
           }
 
           @media (min-width: 768px) {
