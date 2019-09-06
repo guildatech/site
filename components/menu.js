@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Link from "next/link";
+import "../static/style.css";
 
 export default class Menu extends Component {
   constructor(props) {
@@ -68,12 +69,12 @@ export default class Menu extends Component {
             cursor: pointer;
           }
           aside li:first-letter {
-            color: #e9b625;
+            color: var(--cor-primaria);
           }
 
           aside li:hover {
             color: white !important;
-            background: #e9b625;
+            background: var(--cor-primaria);
           }
           aside li:hover a {
             color: white !important;

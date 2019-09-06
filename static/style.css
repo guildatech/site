@@ -1,0 +1,19 @@
+:root {
+	--cor-primaria: #e9b625;
+}
+
+body, html {
+	width: 100vw;
+	height: 100vh
+}
+
+* {
+	box-sizing: border-box;
+}
+
+
+
+a {
+	
+            text-decoration: none;
+}
