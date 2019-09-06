@@ -15,6 +15,11 @@ export default class Nav extends Component {
         href: "https://t.me/guildatech",
         label: "Telegram",
         icon: "../static/icons8-telegram-24.png"
+      },
+      {
+        href: "login",
+        label: "Login",
+        icon: "../static/user.svg"
       }
     ].map(link => {
       link.key = `nav-link-${link.href}-${link.label}`;
@@ -27,7 +32,7 @@ export default class Nav extends Component {
     return (
       <nav>
         <ul>
-          <li id="menu">
+          <li id="menu" className={this.props.updateMenu ? "" : "hide"}>
             <input
               onClick={this.props.updateMenu}
               type="checkbox"
@@ -56,7 +61,8 @@ export default class Nav extends Component {
               <li key={key}>
                 <Link href={href}>
                   <a>
-                    <img aria-label={label} alt={label} src={icon} />
+                    <img aria-label={label} alt={label} title={label} tooltip={label} src={icon}  aria-label={label}
+                    style={{width: '24px'}}/>
                   </a>
                 </Link>
               </li>
@@ -196,6 +202,10 @@ export default class Nav extends Component {
             #gt-logo {
               transform: translateX(-45px);
             }
+          }
+
+          .hide  > *{
+            display: none !important;
           }
         `}</style>
       </nav>
