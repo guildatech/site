@@ -22,7 +22,7 @@ const Home = () => (
           <br /> inclusive <strong>Programação</strong>
         </p>
 
-        <Button onClick={saibaMais} type="button" title="Saiba Mais"></Button>
+        <Button onClick={saibaMais} title="Saiba Mais"></Button>
       </div>
       <div className="simbolo esticar-largura">
         <svg
