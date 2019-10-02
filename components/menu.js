@@ -98,6 +98,7 @@ export default class Menu extends Component {
 
             .aside-open {
               left: 0px;
+              width: 250px;
             }
           }
         `}</style>
