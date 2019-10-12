@@ -4,7 +4,61 @@ import Button from "../components/button";
 import Input from "../components/input";
 import Link from "next/link";
 
+const API_URL=process.env.API_URL;
 export default class Cadastrar extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      name:'',
+      username:'',
+      password:'',
+      email:''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({ [nam]: val });
+  }
+
+  sendRegistration(form) {
+    fetch(`${API_URL}/register`, {
+      method: 'POST',
+      headers: {
+        "Access-Control-Allow-Origin": "true"
+    },
+      body: JSON.stringify(form)
+    }).then((res)=>{
+      if(res.ok){
+        return res;
+      }
+      else
+      throw res;
+    }
+      ).then((res)=>{
+      console.log(res);
+    }).catch((err)=>{
+      console.error(err);
+    })
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    let newUser = {
+      name:this.state.name,
+      username:this.state.username,
+      password:this.state.password,
+      email:this.state.email
+    }
+
+
+    console.log(newUser);
+    this.sendRegistration(newUser)
+  }
   render() {
     return (
       <Fragment>
@@ -12,22 +66,34 @@ export default class Cadastrar extends Component {
         <main>
           <section>
             <h1> Cadastre sua conta </h1>
-            <form className="login-formulario ">
-              <Input
+            <form className="login-formulario " onSubmit={this.handleSubmit}>
+            <Input
+                label="Usuário"
+                type="text"
+                id="username"
+                minLength="4"
+                required={true}
+                onChange={this.handleChange}              /> <Input
                 label="Nome"
                 type="text"
-                id="nome"
-                onChange={this.formularioPreenchimento}              />
+                required={true}
+                id="name"
+                minLength="4"
+                onChange={this.handleChange}              />
                 <Input
+                required={true}
                 label="E-mail"
                 type="email"
+                minLength="6"
                 id="email"
-                onChange={this.formularioPreenchimento}              />
+                onChange={this.handleChange}              />
               <Input
+                required={true}
+                minLength="8"
                 label="Senha"
                 type="password"
-                id="senha"
-                onChange={this.formularioPreenchimento}              />
+                id="password"
+                onChange={this.handleChange}              />
              
 
               <Button type="submit" title="Cadastrar"></Button>
@@ -47,7 +113,8 @@ export default class Cadastrar extends Component {
               text-align: center;
               font-size: 36px;
               font-weight: 900;
-              padding: 15px 5px;
+              padding: 5px 5px 15px;
+              margin: 5px 5px 15px;
             }
 
             h1:first-letter {
@@ -79,7 +146,7 @@ export default class Cadastrar extends Component {
               min-width: 350px;
               box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.45);
               transistion: all 300ms;
-              padding: 10px 15px;
+              padding: 5px 15px 10px ;
               positin: relative;
             }
 

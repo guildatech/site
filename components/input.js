@@ -18,6 +18,9 @@ export default class Input extends Component {
             id={this.props.id}
             placeholder={this.props.label}
             onChange={this.props.onChange}
+            required={this.props.required}
+            minLength={this.props.minLength}
+            maxLength={this.props.maxLength}
           />
           <label className="label" htmlFor={this.props.id}>
             {" "}

@@ -4,14 +4,17 @@
 
 body, html {
 	width: 100vw;
-	height: 100vh
+	min-height: 90vh;
+	height: auto;
 }
 
 * {
 	box-sizing: border-box;
 }
 
-
+body > div:first-child{
+	margin-top: -15px
+}
 
 a {
 	
