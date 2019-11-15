@@ -1,5 +1,8 @@
 :root {
-	--cor-primaria: #e9b625;
+	--color-primary: #e9b625;
+	--color-green: #25e935;
+	--color-red: #e93225;
+	--color-green-darken: #1BC12A;
 }
 
 body, html {

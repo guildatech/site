@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from "react";
+import { Component, Fragment } from "react";
 import Button from "../components/button";
 import Input from "../components/input";
 import Navigation from "../components/navigation";
+import Section from "../components/section";
 import UserApi from "../services/user";
 
 export default class Register extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      username: '',
-      password: '',
-      email: ''
+      name: "",
+      username: "",
+      password: "",
+      email: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,18 +34,17 @@ export default class Register extends Component {
       username: this.state.username,
       password: this.state.password,
       email: this.state.email
-    }
-
+    };
 
     console.log(newUser);
-    this.sendRegistration(newUser)
+    this.sendRegistration(newUser);
   }
   render() {
     return (
       <Fragment>
         <Navigation />
         <main>
-          <section>
+          <Section>
             <h1> Cadastre sua conta </h1>
             <form className="login-formulario " onSubmit={this.handleSubmit}>
               <Input
@@ -54,35 +53,35 @@ export default class Register extends Component {
                 id="username"
                 minLength="4"
                 required={true}
-                onChange={this.handleChange} /> <Input
+                onChange={this.handleChange}
+              />{" "}
+              <Input
                 label="Nome"
                 type="text"
                 required={true}
                 id="name"
                 minLength="4"
-                onChange={this.handleChange} />
+                onChange={this.handleChange}
+              />
               <Input
                 required={true}
                 label="E-mail"
                 type="email"
                 minLength="6"
                 id="email"
-                onChange={this.handleChange} />
+                onChange={this.handleChange}
+              />
               <Input
                 required={true}
                 minLength="8"
                 label="Senha"
                 type="password"
                 id="password"
-                onChange={this.handleChange} />
-
-
+                onChange={this.handleChange}
+              />
               <Button type="submit" title="Cadastrar"></Button>
             </form>
-
-
-
-          </section>
+          </Section>
 
           <style jsx>{`
             :global(body) {
@@ -99,7 +98,7 @@ export default class Register extends Component {
             }
 
             h1:first-letter {
-              color: var(--cor-primaria);
+              color: var(--color-primary);
             }
 
             a.logo {
@@ -122,12 +121,12 @@ export default class Register extends Component {
             }
 
             section {
-              border: 1px solid var(--cor-primaria);
+              border: 1px solid var(--color-primary);
               min-height: 450px;
               min-width: 350px;
               box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.45);
               transistion: all 300ms;
-              padding: 5px 15px 10px ;
+              padding: 5px 15px 10px;
               positin: relative;
             }
 
@@ -155,29 +154,28 @@ export default class Register extends Component {
             .recuperar-senha {
               font-size: 12px;
               padding: 5px;
-              margin-bottom:10px;              
+              margin-bottom: 10px;
               align-self: normal;
               margin-left: 35px;
             }
-           .recuperar-senha a {
-            color: #616060;
+            .recuperar-senha a {
+              color: #616060;
             }
 
             .register {
               position: relative;
               display: flex;
               justify-content: center;
-              align-items: center;              
-              font-size:18px; 
-              text-align:center;
-              padding: 10px 40px ;
+              align-items: center;
+              font-size: 18px;
+              text-align: center;
+              padding: 10px 40px;
               font-weight: 700;
               margin: 25px 15px;
-              border-bottom: 2px solid var(--cor-primaria);
-             
+              border-bottom: 2px solid var(--color-primary);
             }
             .register a {
-               color: black;
+              color: black;
             }
           `}</style>
         </main>

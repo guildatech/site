@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import { Component } from "react";
 import "../static/style.css";
 
 export default class Input extends Component {
@@ -38,11 +37,11 @@ export default class Input extends Component {
           input {
             padding: 10px;
             margin: 15px 5px 10px;
-            border: 1px solid var(--cor-primaria);
+            border: 1px solid var(--color-primary);
             position: relative;
             display: block;
             width: 250px;
-            outline-color: var(--cor-primaria) !important;
+            outline-color: var(--color-primary) !important;
           }
           input + label {
             position: absolute;
@@ -56,7 +55,7 @@ export default class Input extends Component {
             color: white !important;
           }
           input:focus::placeholder {
-            color: var(--cor-primaria) !important;
+            color: var(--color-primary) !important;
           }
 
           input:focus + label,

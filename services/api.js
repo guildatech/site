@@ -13,5 +13,17 @@ api.interceptors.request.use(async config => {
     }
     return config;
 });
-
+axios.interceptors.response.use(function (response) {
+    return response;
+}, function (error) {
+    if (error.response && error.response.status) {
+        return Promise.reject({
+            error: {
+                message: error.message,
+                stack: error.stack
+            }, response: error.response
+        })
+    } else
+        return Promise.reject(error);
+});
 export default api;

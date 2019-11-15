@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import { Component } from "react";
 import Link from "next/link";
 
 export default class Nav extends Component {
@@ -61,8 +60,15 @@ export default class Nav extends Component {
               <li key={key}>
                 <Link href={href}>
                   <a>
-                    <img aria-label={label} alt={label} title={label} tooltip={label} src={icon}  aria-label={label}
-                    style={{width: '24px'}}/>
+                    <img
+                      aria-label={label}
+                      alt={label}
+                      title={label}
+                      tooltip={label}
+                      src={icon}
+                      aria-label={label}
+                      style={{ width: "24px" }}
+                    />
                   </a>
                 </Link>
               </li>
@@ -183,7 +189,6 @@ export default class Nav extends Component {
             width: 30px;
             flex-grow: 0;
             padding: 6px 0px;
-        
           }
           .network-links a:hover::after {
             width: 100%;
@@ -206,7 +211,7 @@ export default class Nav extends Component {
             }
           }
 
-          .hide  > *{
+          .hide > * {
             display: none !important;
           }
         `}</style>

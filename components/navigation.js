@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from "react";
-import ReactDOM from "react-dom";
+import { Component, Fragment } from "react";
 import Nav from "../components/nav";
 import Menu from "../components/menu";
 import Head from "../components/head";
