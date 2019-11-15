@@ -5,18 +5,36 @@ import Head from "../components/head";
 import Nav from "../components/nav";
 import Link from "next/link";
 import "../static/style.css";
+import SessionApi from "../services/session";
+import { login } from "../services/auth";
 
 export default class Login extends Component {
   constructor() {
     super();
-    this.state = { usuario: "", senha: "" };
+    this.state = { email: "", password: "" };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  formularioPreenchimento = event => {
+
+  handleChange(event) {
     let nam = event.target.name;
     let val = event.target.value;
     this.setState({ [nam]: val });
-  };
+  }
+
+  login(form) {
+    SessionApi.login(form);
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    let user = {
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    this.login(user)
+  }
 
   render() {
     return (
@@ -26,19 +44,19 @@ export default class Login extends Component {
         <main>
           <section>
             <h1> Acesse sua conta</h1>
-            <form className="login-formulario ">
+            <form className="login-formulario " onSubmit={this.handleSubmit}>
               <Input
-                label="Usuário"
-                type="text"
-                id="usuario"
-                onChange={this.formularioPreenchimento}              />
+                label="E-mail"
+                type="email"
+                id="email"
+                onChange={this.handleChange} />
               <Input
                 label="Senha"
                 type="password"
-                id="senha"
-                onChange={this.formularioPreenchimento}              />
-              <span className="recuperar-senha">
-                <Link href="recuperarSenha">
+                id="password"
+                onChange={this.handleChange} />
+              <span className="forgot-password">
+                <Link href="forgotPassword">
                   <a>Não lembra sua senha? </a>
                 </Link>
               </span>
@@ -47,11 +65,11 @@ export default class Login extends Component {
             </form>
 
 
-             <span className="cadastrar">
-                <Link href="cadastrar">
-                  <a>É a sua primeira vez aqui? </a>
-                </Link>
-              </span>
+            <span className="register">
+              <Link href="register">
+                <a>É a sua primeira vez aqui? </a>
+              </Link>
+            </span>
           </section>
 
           <style jsx>{`
@@ -121,18 +139,18 @@ export default class Login extends Component {
                 box-shadow: none;
               }
             }
-            .recuperar-senha {
+            .forgot-password {
               font-size: 12px;
               padding: 5px;
               margin-bottom:10px;              
               align-self: normal;
               margin-left: 35px;
             }
-           .recuperar-senha a {
+           .forgot-password a {
             color: #616060;
             }
 
-            .cadastrar {
+            .register {
               position: relative;
               display: flex;
               justify-content: center;
@@ -145,7 +163,7 @@ export default class Login extends Component {
               border-bottom: 2px solid var(--cor-primaria);
              
             }
-            .cadastrar a {
+            .register a {
                color: black;
             }
           `}</style>
