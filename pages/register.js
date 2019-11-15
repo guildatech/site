@@ -3,6 +3,7 @@ import Button from "../components/button";
 import Input from "../components/input";
 import Navigation from "../components/navigation";
 import Section from "../components/section";
+import Alert from "../components/alert";
 import UserApi from "../services/user";
 
 export default class Register extends Component {
@@ -12,7 +13,11 @@ export default class Register extends Component {
       name: "",
       username: "",
       password: "",
-      email: ""
+      email: "",
+      error: null,
+      success: null,
+      loading: null,
+      errors: {}
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,10 +29,20 @@ export default class Register extends Component {
     this.setState({ [nam]: val });
   }
 
-  sendRegistration(form) {
-    UserApi.register(form);
+  async register(form) {
+    try {
+      const response = await UserApi.register(form);
+      this.setState({ success: true });
+    } catch (errors) {
+      this.setState({ error: true, errors: errors });
+    }
+    this.setState({ loading: false });
   }
+
   handleSubmit(event) {
+    if (this.state.loading) return;
+    this.setState({ loading: true, success: null, error: null, errors: {} });
+
     event.preventDefault();
     let newUser = {
       name: this.state.name,
@@ -36,8 +51,7 @@ export default class Register extends Component {
       email: this.state.email
     };
 
-    console.log(newUser);
-    this.sendRegistration(newUser);
+    this.register(newUser);
   }
   render() {
     return (
@@ -47,6 +61,16 @@ export default class Register extends Component {
           <Section>
             <h1> Cadastre sua conta </h1>
             <form className="login-formulario " onSubmit={this.handleSubmit}>
+              {this.state.loading ? <Alert>Autenticando</Alert> : null}
+              {this.state.success ? (
+                <Alert success>Na Guilda você, aceito foi.</Alert>
+              ) : null}
+              {this.state.error ? (
+                <Alert danger>
+                  {this.state.errors.general || 'Algo de errado não está certo.'}
+                </Alert>
+              ) : null}
+              <br />
               <Input
                 label="Usuário"
                 type="text"
@@ -54,7 +78,11 @@ export default class Register extends Component {
                 minLength="4"
                 required={true}
                 onChange={this.handleChange}
-              />{" "}
+                invalid={this.state.errors.username}
+              />
+              {this.state.errors.username ? (
+                <span className="validation">E-mail não encontrado</span>
+              ) : null}
               <Input
                 label="Nome"
                 type="text"
@@ -62,7 +90,12 @@ export default class Register extends Component {
                 id="name"
                 minLength="4"
                 onChange={this.handleChange}
+                invalid={this.state.errors.name}
               />
+              {this.state.errors.name ? (
+                <span className="validation">E-mail não encontrado</span>
+              ) : null}
+
               <Input
                 required={true}
                 label="E-mail"
@@ -70,7 +103,11 @@ export default class Register extends Component {
                 minLength="6"
                 id="email"
                 onChange={this.handleChange}
+                invalid={this.state.errors.email}
               />
+              {this.state.errors.email ? (
+                <span className="validation">E-mail não encontrado</span>
+              ) : null}
               <Input
                 required={true}
                 minLength="8"
@@ -78,7 +115,12 @@ export default class Register extends Component {
                 type="password"
                 id="password"
                 onChange={this.handleChange}
+
+                invalid={this.state.errors.password}
               />
+              {this.state.errors.password ? (
+                <span className="validation">E-mail não encontrado</span>
+              ) : null}
               <Button type="submit" title="Cadastrar"></Button>
             </form>
           </Section>

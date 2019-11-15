@@ -1,0 +1,37 @@
+
+            :global(body) {
+                margin: 0;
+                padding: 0px;
+              }
+
+body, html {
+	width: 100vw;
+	min-height: 90vh;
+	height: auto;
+}
+
+
+* {
+	box-sizing: border-box;
+}
+
+body > div:first-child{
+	margin-top: -15px
+}
+
+a {
+	
+            text-decoration: none;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    padding: 15px 5px;
+  }
+
+  h1:first-letter {
+    color: var(--color-primary);
+  }

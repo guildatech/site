@@ -1,25 +1,3 @@
-:root {
-	--color-primary: #e9b625;
-	--color-green: #25e935;
-	--color-red: #e93225;
-	--color-green-darken: #1BC12A;
-}
+@import "variables.css";
+@import "global.css";
 
-body, html {
-	width: 100vw;
-	min-height: 90vh;
-	height: auto;
-}
-
-* {
-	box-sizing: border-box;
-}
-
-body > div:first-child{
-	margin-top: -15px
-}
-
-a {
-	
-            text-decoration: none;
-}

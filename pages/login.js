@@ -8,7 +8,8 @@ import Alert from "../components/alert";
 import Link from "next/link";
 import "../static/style.css";
 import SessionApi from "../services/session";
-import { login } from "../services/auth";
+import { login, isAuthenticated } from "../services/auth";
+import Router from 'next/router'
 
 export default class Login extends Component {
   constructor() {
@@ -23,6 +24,12 @@ export default class Login extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    if (isAuthenticated) {
+      console.log(isAuthenticated)
+      //Router.push('/authenticated/')
+
+    }
   }
 
   handleChange(event) {
@@ -36,6 +43,9 @@ export default class Login extends Component {
       const response = await SessionApi.login(form);
       login(response.data.token);
       this.setState({ success: true });
+      setTimeout(() => {
+        Router.push('/authenticated/')
+      }, 500)
     } catch (errors) {
       this.setState({ error: true, errors: errors });
     }
@@ -63,28 +73,34 @@ export default class Login extends Component {
             <form className="login-formulario " onSubmit={this.handleSubmit}>
               {this.state.loading ? <Alert>Autenticando</Alert> : null}
               {this.state.success ? (
-                <Alert success>Deu tudo certo</Alert>
+                <Alert success>Acertô miseravi</Alert>
               ) : null}
               {this.state.error ? (
-                <Alert danger>Algo de errado não está certo</Alert>
+                <Alert danger>
+                  {this.state.errors.general || 'Algo de errado não está certo.'}
+                </Alert>
               ) : null}
               <br />
               <Input
                 label="E-mail"
                 type="email"
                 id="email"
+                required={true}
+                invalid={this.state.errors.email ? true : false}
                 onChange={this.handleChange}
               />
               {this.state.errors.email ? (
-                <span>E-mail não encontrado</span>
+                <span className="validation">E-mail não encontrado</span>
               ) : null}
               <Input
                 label="Senha"
+                required={true}
                 type="password"
                 id="password"
+                invalid={this.state.errors.password}
                 onChange={this.handleChange}
               />
-              {this.state.errors.password ? <span>Senha inválida</span> : null}
+              {this.state.errors.password ? <span className="validation">Senha inválida</span> : null}
               <span className="forgot-password">
                 <Link href="forgotPassword">
                   <a>Não lembra sua senha? </a>
@@ -178,6 +194,16 @@ export default class Login extends Component {
             }
             .register a {
               color: black;
+            }
+            .validation {
+              display: flex;
+              align-items: flex-end;
+              justify-content: flex-end;
+              width: 100%;
+              padding: 0px 50px;
+              font-weight: 700;
+              font-size:14px;
+              color: var(--color-red);
             }
           `}</style>
         </main>
