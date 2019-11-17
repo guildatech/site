@@ -31,7 +31,7 @@ export default class Register extends Component {
 
   async register(form) {
     try {
-      const response = await UserApi.register(form);
+      await UserApi.register(form);
       this.setState({ success: true });
     } catch (errors) {
       this.setState({ error: true, errors: errors });
