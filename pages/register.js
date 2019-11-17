@@ -71,57 +71,59 @@ export default class Register extends Component {
                 </Alert>
               ) : null}
               <br />
-              <Input
-                label="Usuário"
-                type="text"
-                id="username"
-                minLength="4"
-                required={true}
-                onChange={this.handleChange}
-                invalid={this.state.errors.username}
-              />
-              {this.state.errors.username ? (
-                <span className="validation">E-mail não encontrado</span>
-              ) : null}
-              <Input
-                label="Nome"
-                type="text"
-                required={true}
-                id="name"
-                minLength="4"
-                onChange={this.handleChange}
-                invalid={this.state.errors.name}
-              />
-              {this.state.errors.name ? (
-                <span className="validation">E-mail não encontrado</span>
-              ) : null}
+              <fieldset disabled={this.state.success}>
+                <Input
+                  label="Usuário"
+                  type="text"
+                  id="username"
+                  minLength="4"
+                  required={true}
+                  onChange={this.handleChange}
+                  invalid={this.state.errors.username}
+                />
+                {this.state.errors.username ? (
+                  <span className="validation">Usuário já utilizado.</span>
+                ) : null}
+                <Input
+                  label="Nome"
+                  type="text"
+                  required={true}
+                  id="name"
+                  minLength="4"
+                  onChange={this.handleChange}
+                  invalid={this.state.errors.name}
+                />
+                {this.state.errors.name ? (
+                  <span className="validation">Nome inválido</span>
+                ) : null}
 
-              <Input
-                required={true}
-                label="E-mail"
-                type="email"
-                minLength="6"
-                id="email"
-                onChange={this.handleChange}
-                invalid={this.state.errors.email}
-              />
-              {this.state.errors.email ? (
-                <span className="validation">E-mail não encontrado</span>
-              ) : null}
-              <Input
-                required={true}
-                minLength="8"
-                label="Senha"
-                type="password"
-                id="password"
-                onChange={this.handleChange}
+                <Input
+                  required={true}
+                  label="E-mail"
+                  type="email"
+                  minLength="6"
+                  id="email"
+                  onChange={this.handleChange}
+                  invalid={this.state.errors.email}
+                />
+                {this.state.errors.email ? (
+                  <span className="validation">E-mail já utilizado</span>
+                ) : null}
+                <Input
+                  required={true}
+                  minLength="8"
+                  label="Senha"
+                  type="password"
+                  id="password"
+                  onChange={this.handleChange}
 
-                invalid={this.state.errors.password}
-              />
-              {this.state.errors.password ? (
-                <span className="validation">E-mail não encontrado</span>
-              ) : null}
-              <Button type="submit" title="Cadastrar"></Button>
+                  invalid={this.state.errors.password}
+                />
+                {this.state.errors.password ? (
+                  <span className="validation">Essa senha não ta boa não.</span>
+                ) : null}
+              </fieldset>
+              <Button type="submit" title="Cadastrar" disabled={this.state.success}></Button>
             </form>
           </Section>
 
@@ -176,13 +178,17 @@ export default class Register extends Component {
               position: relative;
             }
 
-            .login-formulario {
+            .login-formulario,
+            fieldset {
               display: flex;
               justify-content: center;
               align-items: center;
               flex-direction: column;
             }
 
+            fieldset {
+              border: none
+            }
             @media (max-width: 768px) {
               main {
                 height: auto;
@@ -218,6 +224,16 @@ export default class Register extends Component {
             }
             .register a {
               color: black;
+            }
+            .validation {
+              display: flex;
+              align-items: flex-end;
+              justify-content: flex-end;
+              width: 100%;
+              padding: 0px 50px;
+              font-weight: 700;
+              font-size:14px;
+              color: var(--color-red);
             }
           `}</style>
         </main>
