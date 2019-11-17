@@ -67,7 +67,8 @@ export default class Register extends Component {
               ) : null}
               {this.state.error ? (
                 <Alert danger>
-                  {this.state.errors.general || 'Algo de errado não está certo.'}
+                  {this.state.errors.general ||
+                    "Algo de errado não está certo."}
                 </Alert>
               ) : null}
               <br />
@@ -116,14 +117,17 @@ export default class Register extends Component {
                   type="password"
                   id="password"
                   onChange={this.handleChange}
-
                   invalid={this.state.errors.password}
                 />
                 {this.state.errors.password ? (
                   <span className="validation">Essa senha não ta boa não.</span>
                 ) : null}
               </fieldset>
-              <Button type="submit" title="Cadastrar" disabled={this.state.success}></Button>
+              <Button
+                type="submit"
+                title="Cadastrar"
+                disabled={this.state.success}
+              ></Button>
             </form>
           </Section>
 
@@ -187,7 +191,7 @@ export default class Register extends Component {
             }
 
             fieldset {
-              border: none
+              border: none;
             }
             @media (max-width: 768px) {
               main {
@@ -232,7 +236,7 @@ export default class Register extends Component {
               width: 100%;
               padding: 0px 50px;
               font-weight: 700;
-              font-size:14px;
+              font-size: 14px;
               color: var(--color-red);
             }
           `}</style>

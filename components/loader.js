@@ -1,16 +1,14 @@
 import { Component, Fragment } from "react";
 
 export default class LOader extends Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <Fragment>
-
-
-                <style jsx>{`
+  render() {
+    return (
+      <Fragment>
+        <style jsx>{`
         
          div {
             border: 1px solid var(--color-primary);
@@ -43,7 +41,7 @@ export default class LOader extends Component {
           }
 
         `}</style>
-            </Fragment>
-        );
-    }
+      </Fragment>
+    );
+  }
 }

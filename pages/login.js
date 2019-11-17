@@ -9,7 +9,7 @@ import Link from "next/link";
 import "../static/style.css";
 import SessionApi from "../services/session";
 import { login, isAuthenticated } from "../services/auth";
-import Router from 'next/router'
+import Router from "next/router";
 
 export default class Login extends Component {
   constructor() {
@@ -26,9 +26,8 @@ export default class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     if (isAuthenticated) {
-      console.log(isAuthenticated)
+      console.log(isAuthenticated);
       //Router.push('/authenticated/')
-
     }
   }
 
@@ -44,8 +43,8 @@ export default class Login extends Component {
       login(response.data.token);
       this.setState({ success: true });
       setTimeout(() => {
-        Router.push('/authenticated/')
-      }, 500)
+        Router.push("/authenticated/");
+      }, 500);
     } catch (errors) {
       this.setState({ error: true, errors: errors });
     }
@@ -77,7 +76,8 @@ export default class Login extends Component {
               ) : null}
               {this.state.error ? (
                 <Alert danger>
-                  {this.state.errors.general || 'Algo de errado não está certo.'}
+                  {this.state.errors.general ||
+                    "Algo de errado não está certo."}
                 </Alert>
               ) : null}
               <br />
@@ -100,7 +100,9 @@ export default class Login extends Component {
                 invalid={this.state.errors.password}
                 onChange={this.handleChange}
               />
-              {this.state.errors.password ? <span className="validation">Senha inválida</span> : null}
+              {this.state.errors.password ? (
+                <span className="validation">Senha inválida</span>
+              ) : null}
               <span className="forgot-password">
                 <Link href="forgotPassword">
                   <a>Não lembra sua senha? </a>
@@ -202,7 +204,7 @@ export default class Login extends Component {
               width: 100%;
               padding: 0px 50px;
               font-weight: 700;
-              font-size:14px;
+              font-size: 14px;
               color: var(--color-red);
             }
           `}</style>
