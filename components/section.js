@@ -11,7 +11,7 @@ export default class Section extends Component {
         <section>{this.props.children}</section>
         <style jsx>{`
           section {
-            border: 1px solid var(--color-primary);
+            border: 1px solid var(--guildatech-color-primary);
             min-height: 450px;
             min-width: 350px;
             box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.45);

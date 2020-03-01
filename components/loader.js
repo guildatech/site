@@ -11,7 +11,7 @@ export default class LOader extends Component {
         <style jsx>{`
         
          div {
-            border: 1px solid var(--color-primary);
+            border: 1px solid var(--guildatech-color-primary);
             min-height: 50px;
             min-width: 100%;
             box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
@@ -24,12 +24,12 @@ export default class LOader extends Component {
             }
           }
           .success {
-            border-color: var(--color-green) !important;
-            color: var(--color-green-darker) !important;
+            border-color: var(--guildatech-color-green) !important;
+            color: var(--guildatech-color-green-darker) !important;
           }
             .danger {
-                border-color: var(--color-red) !important;
-                color: var(--color-red) !important;
+                border-color: var(--guildatech-color-red) !important;
+                color: var(--guildatech-color-red) !important;
           }
           @media (max-width: 768px) {
            

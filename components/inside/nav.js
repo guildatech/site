@@ -6,18 +6,8 @@ export default class Nav extends Component {
     super(props);
     const links = [
       {
-        href: "https://github.com/guildatech/",
-        label: "Github",
-        icon: "../static/icons8-github-24.png"
-      },
-      {
-        href: "https://t.me/guildatech",
-        label: "Telegram",
-        icon: "../static/icons8-telegram-24.png"
-      },
-      {
-        href: "login",
-        label: "Login",
+        href: "profile",
+        label: "Meu Perfil",
         icon: "../static/user.svg"
       }
     ].map(link => {
@@ -47,10 +37,10 @@ export default class Nav extends Component {
           <li id="gt-logo">
             <Link prefetch href="/">
               <a className="logo">
-                <img src="static/logo.png" />
+                <img src="../static/logo.png" />
 
                 <span>
-                  Guilda<strong>Tech</strong>
+                  <strong>GT</strong>
                 </span>
               </a>
             </Link>
@@ -142,12 +132,12 @@ export default class Nav extends Component {
             z-index: 10;
             text-align: center;
           }
-          ul {
+          nav > ul {
             display: flex;
             justify-content: space-between;
-          }
-          nav > ul {
-            padding: 4px 16px;
+            margin: 0px !important;
+            padding: 25px 15px 5px;
+            background: var(--guildatech-color-primary);
           }
           li {
             display: flex;
@@ -165,8 +155,7 @@ export default class Nav extends Component {
           }
           a.logo strong {
             font-weight: 700;
-            color: var(--guildatech-color-primary);
-            border-bottom: 2px solid black;
+            color: var(--guildatech-color-light);
           }
           a.logo img {
             height: 30px;

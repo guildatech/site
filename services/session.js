@@ -20,4 +20,15 @@ export default class SessionApi {
         throw errors;
       });
   }
+
+  static async get(user) {
+    return api
+      .get("/session", user)
+      .then(function(response) {
+        return response;
+      })
+      .catch(function(exception) {
+        return exception;
+      });
+  }
 }

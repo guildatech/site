@@ -146,7 +146,7 @@ export default class Register extends Component {
             }
 
             h1:first-letter {
-              color: var(--color-primary);
+              color: var(--guildatech-color-primary);
             }
 
             a.logo {
@@ -169,7 +169,7 @@ export default class Register extends Component {
             }
 
             section {
-              border: 1px solid var(--color-primary);
+              border: 1px solid var(--guildatech-color-primary);
               min-height: 450px;
               min-width: 350px;
               box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.45);
@@ -184,6 +184,7 @@ export default class Register extends Component {
 
             .login-formulario,
             fieldset {
+              width: 100%;
               display: flex;
               justify-content: center;
               align-items: center;
@@ -224,7 +225,7 @@ export default class Register extends Component {
               padding: 10px 40px;
               font-weight: 700;
               margin: 25px 15px;
-              border-bottom: 2px solid var(--color-primary);
+              border-bottom: 2px solid var(--guildatech-color-primary);
             }
             .register a {
               color: black;
@@ -237,7 +238,7 @@ export default class Register extends Component {
               padding: 0px 50px;
               font-weight: 700;
               font-size: 14px;
-              color: var(--color-red);
+              color: var(--guildatech-color-red);
             }
           `}</style>
         </main>

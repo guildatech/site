@@ -18,18 +18,19 @@ export default class Button extends Component {
         className="botao-primario"
         onClick={this.props.onClick}
         disabled={this.state.disabled}
+        style={this.props.style}
       >
         {this.props.title}
 
         <style jsx>{`
           button {
             color: black;
-            background: #e9b625;
+            background: var(--guildatech-color-primary);
             border-radius: 80px;
             padding: 10px 20px;
             border: none;
             box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-            border: 2px solid #e9b625;
+            border: 2px solid var(--guildatech-color-primary);
             cursor: pointer;
             transition: all 300ms ease;
           }

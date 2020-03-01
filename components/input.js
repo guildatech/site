@@ -48,15 +48,15 @@ export default class Input extends Component {
           input {
             padding: 10px;
             margin: 15px 5px 10px;
-            border: 1px solid var(--color-primary);
+            border: 1px solid var(--guildatech-color-primary);
             position: relative;
             display: block;
-            width: 250px;
-            outline-color: var(--color-primary) !important;
+            width: 99%;
+            outline-color: var(--guildatech-color-primary) !important;
           }
           input[invalid="true"] {
-            outline-color: var(--color-red) !important;
-            border: 1px solid var(--color-red);
+            outline-color: var(--guildatech-color-red) !important;
+            border: 1px solid var(--guildatech-color-red);
           }
           input + label {
             position: absolute;
@@ -70,7 +70,7 @@ export default class Input extends Component {
             color: white !important;
           }
           input:focus::placeholder {
-            color: var(--color-primary) !important;
+            color: var(--guildatech-color-primary) !important;
           }
 
           input:focus + label,

@@ -25,9 +25,9 @@ export default class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    if (isAuthenticated) {
-      console.log(isAuthenticated);
-      //Router.push('/authenticated/')
+    if (isAuthenticated()) {
+      console.log(isAuthenticated())
+      Router.push("/authenticated/");
     }
   }
 
@@ -133,7 +133,7 @@ export default class Login extends Component {
             }
 
             h1:first-letter {
-              color: var(--color-primary);
+              color: var(--guildatech-color-primary);
             }
 
             a.logo {
@@ -192,7 +192,7 @@ export default class Login extends Component {
               padding: 10px 40px;
               font-weight: 700;
               margin: 25px 15px;
-              border-bottom: 2px solid var(--color-primary);
+              border-bottom: 2px solid var(--guildatech-color-primary);
             }
             .register a {
               color: black;
@@ -205,7 +205,7 @@ export default class Login extends Component {
               padding: 0px 50px;
               font-weight: 700;
               font-size: 14px;
-              color: var(--color-red);
+              color: var(--guildatech-color-red);
             }
           `}</style>
         </main>
