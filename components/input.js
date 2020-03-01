@@ -31,6 +31,7 @@ export default class Input extends Component {
             invalid={
               this.state.invalid ? this.state.invalid.toString() : "false"
             }
+            value={this.props.value}
           />
           <label className="label" htmlFor={this.props.id}>
             {" "}

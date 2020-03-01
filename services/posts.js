@@ -12,7 +12,7 @@ export default class PostApi {
   }
   static async pagination(params) {
     return api
-      .get("/blog_posts/pagination", params)
+      .get("/blog_posts/pagination", { params:params })
       .then(function(response) {
         return response;
       })

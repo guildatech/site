@@ -72,7 +72,7 @@ export default class AuthPost extends Component {
       <Fragment>
         <article>
           <form className="novo-post-formulario " onSubmit={this.handleSubmit}>
-            {this.state.loading ? <Alert>Autenticando</Alert> : null}
+            {this.state.loading ? <Alert>Salvando</Alert> : null}
             {this.state.success ? (
               <Alert success>
                 Post bonito, post bem feito e salvo com sucesso.

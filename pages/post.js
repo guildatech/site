@@ -1,9 +1,11 @@
 import { Component, Fragment } from "react";
 import Navigation from "../components/navigation";
 import Main from "../components/main";
+import Button from "../components/button";
 import PostApi from "../services/posts";
 import { withRouter } from "next/router";
 import RenderHTML from "../components/renderHTML"
+import Router from "next/router";
 
 class Post extends Component {
   constructor(props) {
@@ -40,6 +42,9 @@ class Post extends Component {
   toLocaleDateString(date) {
     return new Date(date).toLocaleDateString()
   }
+  voltar = () => {
+   Router.push('/posts')
+  };
   render() {
     return (
       <Fragment>
@@ -53,6 +58,11 @@ class Post extends Component {
             <Fragment >
               <section className="post-view">
 
+              <Button style={{width:'80px'}}
+                type="button"
+                  title="Voltar"
+                  onClick={this.voltar}
+              ></Button>
               <h3 className="post-title">{this.state.post.post_title}</h3>
 
               <article>

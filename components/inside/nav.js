@@ -9,6 +9,11 @@ export default class Nav extends Component {
         href: "profile",
         label: "Meu Perfil",
         icon: "../static/user.svg"
+      },
+      {
+        href: "logout",
+        label: "Sair",
+        icon: "../static/logout.svg"
       }
     ].map(link => {
       link.key = `nav-link-${link.href}-${link.label}`;
@@ -132,6 +137,10 @@ export default class Nav extends Component {
             z-index: 10;
             text-align: center;
           }
+          ul {
+            display: flex;
+            justify-content: space-between;
+          }
           nav > ul {
             display: flex;
             justify-content: space-between;
@@ -169,11 +178,7 @@ export default class Nav extends Component {
             background: #000;
             transition: width 0.8s;
           }
-          /*  @media (min-width:768px){
-      #menu {
-      display: none;
-      }
-      }*/
+          
           #menu {
             width: 30px;
             flex-grow: 0;

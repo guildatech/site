@@ -14,28 +14,37 @@ export default class AuthPosts extends Component {
       adicao: false,
       posts: [],
       errors: [],
-      loading: null
+      loading: null,
+      pagination: {data:[]}
     };
     if (!isAuthenticated()) {
       this.props.history.push("/");
-    } else {
-      SessionApi.get();
-    }
+    } 
     this.list = this.list.bind(this);
   }
-  componentDidMount() {
-    this.list();
-  }
-
+    componentDidMount() {
+      if (isAuthenticated()) {
+        this.getUser();
+      }
+    }
+    getUser() {
+      SessionApi.get().then(res => {
+        this.setState({ user: res.data });
+        this.list();
+      });
+    }
   async list() {
     this.setState({ loading: true });
     try {
-      PostApi.pagination({
+      let params = {
         size: 10,
-        page: 1
-      })
+        page: 1,
+        user_id: this.state.user.id
+      };
+      console.log(params);
+      PostApi.pagination(params)
         .then(res => {
-          this.setState({ posts: [...res.data] });
+          this.setState({ pagination: res.data });
         })
         .finally(() => {
           this.setState({ loading: false });
@@ -81,14 +90,14 @@ export default class AuthPosts extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.posts.map((row, i) => (
+                    {this.state.pagination.data.map((row, i) => (
                       <tr key={i}>
                         <td></td>
                         <td>{row.post_title}</td>
                       </tr>
                     ))}
                   </tbody>
-                  {!this.state.posts.length ? (
+                  {!this.state.pagination.data.length ? (
                     <tfoot>
                       <tr>
                         <td></td>
