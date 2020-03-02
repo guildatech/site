@@ -37,9 +37,6 @@ export default class Posts extends Component {
     let li = clickedElement.tagName.toLowerCase() === 'li' ? clickedElement : clickedElement.closest('li');
     let index = li.dataset && li.dataset.post || -1;
     if (index == -1) return;
-
-    console.log(this.state.posts[index])
-
     Router.push("/post?id="+index);
   }
   render() {

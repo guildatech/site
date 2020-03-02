@@ -4,11 +4,15 @@ export default class Button extends Component {
   constructor(props) {
     super(props);
     this.state = { disabled: false };
+    this.callOnClick = this.callOnClick.bind(this);
   }
   componentWillReceiveProps(updatedProps) {
     if (updatedProps.disabled != this.state.disabled) {
       this.setState({ disabled: updatedProps.disabled });
     }
+  }
+  callOnClick() {
+    this.props.onClick(this.props.data);
   }
 
   render() {
@@ -16,9 +20,10 @@ export default class Button extends Component {
       <button
         type={this.props.type}
         className="botao-primario"
-        onClick={this.props.onClick}
+        onClick={this.callOnClick}
         disabled={this.state.disabled}
         style={this.props.style}
+       data={this.props.data}
       >
         {this.props.title}
 

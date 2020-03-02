@@ -11,21 +11,27 @@ export default class AuthPosts extends Component {
   constructor() {
     super();
     this.state = {
-      adicao: false,
+      newOrEdit: false,
       posts: [],
       errors: [],
       loading: null,
+      editable: null,
       pagination: {data:[]}
     };
     if (!isAuthenticated()) {
       this.props.history.push("/");
     } 
     this.list = this.list.bind(this);
+    this.updateView = this.updateView.bind(this);
+    this.edit = this.edit.bind(this);
   }
     componentDidMount() {
       if (isAuthenticated()) {
         this.getUser();
       }
+    }
+  updateView() {
+      this.setState({newOrEdit : !this.state.newOrEdit})
     }
     getUser() {
       SessionApi.get().then(res => {
@@ -41,7 +47,6 @@ export default class AuthPosts extends Component {
         page: 1,
         user_id: this.state.user.id
       };
-      console.log(params);
       PostApi.pagination(params)
         .then(res => {
           this.setState({ pagination: res.data });
@@ -53,29 +58,29 @@ export default class AuthPosts extends Component {
       throw errors;
     }
   }
-
-  editar = () => {
-    this.setState({ adicao: true });
-  };
-  novo = () => {
-    this.setState({ adicao: true });
-  };
+  edit(data) {
+   
+    let toEdit = this.state.pagination.data.find(d => d.id == data.id);
+    this.setState({ editable: toEdit });
+    this.updateView();
+    
+  }
   render() {
     return (
       <Fragment>
         <Navigation />
         <Main>
           <div>
-            {this.state.adicao ? (
+            {this.state.newOrEdit ? (
               <section>
                 <h3>Novo Post</h3>
                 <br />
-                <Post />
+                <Post editable={this.state.editable} onFinish={this.updateView} />
               </section>
             ) : (
               <section>
                 <Button
-                  onClick={this.novo}
+                  onClick={this.updateView}
                   type="button"
                   title="Novo"
                   style={{ padding: "5px", margin: "0px 10px 0px 5px" }}
@@ -92,7 +97,15 @@ export default class AuthPosts extends Component {
                   <tbody>
                     {this.state.pagination.data.map((row, i) => (
                       <tr key={i}>
-                        <td></td>
+                        <td>
+                          <Button data={{ id: row.id }}
+                          onClick={this.edit}
+                          type="button"
+                          title="Editar"
+                          style={{ padding: "5px", margin: "0px 10px 0px 5px" }}
+                        ></Button>
+
+                        </td>
                         <td>{row.post_title}</td>
                       </tr>
                     ))}

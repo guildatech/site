@@ -26,7 +26,6 @@ export default class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     if (isAuthenticated()) {
-      console.log(isAuthenticated())
       Router.push("/authenticated/");
     }
   }

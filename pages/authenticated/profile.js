@@ -29,7 +29,6 @@ export default class Profile extends Component {
     });
   }
   showStep($event) {
-    console.log($event.currentTarget.dataset.target);
     this.setState({ currentStep: $event.currentTarget.dataset.target });
   }
 
@@ -37,18 +36,20 @@ export default class Profile extends Component {
     return (
       <Fragment>
         <Navigation />
-
         <Main>
           <div className="wizard">
             <ol>
-              <li data-target="#about" onClick={this.showStep}>
-                Sobre Mim
+              <li data-target="#about" onClick={this.showStep}   className={
+                  this.state.currentStep == "#about" ? "active" : ""
+                }>
+                <span>Sobre Mim</span>
               </li>
-              <li data-target="#socialMedial" onClick={this.showStep}>
-                Midias Sociais
+              <li data-target="#socialMedial" onClick={this.showStep}   className={
+                  this.state.currentStep == "#socialMedial" ? "active" : ""}>
+                <span>Midias Sociais</span>
               </li>
-              <li data-target="#privacy" onClick={this.showStep}>
-                Privacidade
+              <li data-target="#privacy" onClick={this.showStep}   className={this.state.currentStep == "#privacy" ? "active" : ""}>
+                <span>Privacidade</span>
               </li>
             </ol>
             <ul>
@@ -56,15 +57,11 @@ export default class Profile extends Component {
                 <User model={this.state.user}></User>
               </li>
               <li
-                className={
-                  this.state.currentStep == "#socialMedial" ? "show" : ""
-                }
-              >
+                className={this.state.currentStep == "#socialMedial" ? "show" : ""}>
                 mostrando Midias Sociais
               </li>
               <li
-                className={this.state.currentStep == "#privacy" ? "show" : ""}
-              >
+                className={this.state.currentStep == "#privacy" ? "show" : ""}>
                 mostrando Privacidade
               </li>
             </ul>
@@ -76,6 +73,7 @@ export default class Profile extends Component {
           padding-left: 0px;
         }
           li {
+            transition: all 300ms ease;
             pointer-events: auto;
             cursor: pointer;
             margin: 5px;
@@ -83,7 +81,9 @@ export default class Profile extends Component {
             padding: 6px 8px;
             flex-grow: 1;
           }
-
+          li span {
+            transition: all 300ms ease;
+          }
           ol {
             display: flex;
             justify-content: space-between;
@@ -97,6 +97,12 @@ export default class Profile extends Component {
           }
           .wizard {
             width:  100%
+          }
+          li.active {
+             border-bottom: 2px solid var(--guildatech-color-primary)
+          }
+          li.active span:first-letter {
+            color:  var(--guildatech-color-primary)
           }
         `}</style>
       </Fragment>

@@ -1,6 +1,7 @@
 import { Component, Fragment } from "react";
 import Button from "../../button";
 import Input from "../../input";
+import Textarea from "../../textarea";
 import Section from "../../section";
 import Alert from "../../alert";
 import { login } from "../../../services/auth";
@@ -15,7 +16,6 @@ export default class User extends Component {
       loading: null,
       errors: {}
     };
-    console.log(this.props.user)
     this.handleChange = this.handleChange.bind(this);
     this.updateUser = this.updateUser.bind(this);
   }
@@ -52,8 +52,8 @@ export default class User extends Component {
     return (
       <Fragment>
         <form className="update-user-formulario " onSubmit={this.updateUser}>
-          {this.state.loading ? <Alert>Autenticando</Alert> : null}
-          {this.state.success ? <Alert success>Acertô miseravi</Alert> : null}
+          {this.state.loading ? <Alert>Atualizando</Alert> : null}
+          {this.state.success ? <Alert success>Atualizado!</Alert> : null}
           {this.state.error ? (
             <Alert danger>
               {this.state.errors.general || "Algo de errado não está certo."}
@@ -63,9 +63,9 @@ export default class User extends Component {
             <Input
               label="Nome"
               type="text"
-              id="nome"
+              id="name"
               required={true}
-              value={this.state.user.nome}
+              value={this.state.user.name}
               invalid={this.state.errors.nome ? true : false}
               onChange={this.handleChange}
             />
@@ -76,22 +76,10 @@ export default class User extends Component {
               type="text"
               id="username"
               required={true}
+              value={this.state.user.username}
               invalid={this.state.errors.username ? true : false}
               onChange={this.handleChange}
             />
-          </div>
-          <div style={{ width: "150px" }}>
-            <Input
-              label="Senha"
-              required={true}
-              type="password"
-              id="password"
-              invalid={this.state.errors.password}
-              onChange={this.handleChange}
-            />
-            {this.state.errors.password ? (
-              <span className="validation">Senha inválida</span>
-            ) : null}
           </div>
 
           <div style={{ width: "250px" }}>
@@ -100,12 +88,23 @@ export default class User extends Component {
               type="email"
               id="email"
               required={true}
+              value={this.state.user.email}
               invalid={this.state.errors.email ? true : false}
               onChange={this.handleChange}
             />
             {this.state.errors.email ? (
               <span className="validation">E-mail inválido</span>
             ) : null}
+          </div>
+          <br />
+          <div style={{ width: "100%" }}>
+            <Textarea
+              label="Bio"
+              id="bio"
+              required={true}
+              invalid={this.state.errors.bio ? true : false}
+              onChange={this.handleChange}
+            />
           </div>
           <br/>
 
@@ -117,11 +116,9 @@ export default class User extends Component {
             margin: 0;
             padding: 0px;
           }
-
           form {
             position: relative;
           }
-
           .update-user-formulario {
           }
           .update-user-formulario  > * {

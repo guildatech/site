@@ -6,8 +6,8 @@ import Alert from "../../components/alert";
 import PostApi from "../../services/posts";
 
 export default class AuthPost extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       adicao: false,
       error: null,
@@ -15,8 +15,8 @@ export default class AuthPost extends Component {
       loading: null,
       errors: {},
       post: {
-        post_title: null,
-        post_body: null
+        post_title: "",
+        post_body: ""
       },
       invalid: {
         post_title: false,
@@ -26,12 +26,11 @@ export default class AuthPost extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  editar = () => {
-    this.setState({ adicao: true });
-  };
-  novo = () => {
-    this.setState({ adicao: true });
-  };
+  componentDidMount() {
+    if (this.props.editable && this.props.editable.id) {
+      this.setState({post:this.props.editable})
+    }
+  }
   handleChange(event) {
     let nam = event.target.name;
     let val = event.target.value;
@@ -45,6 +44,9 @@ export default class AuthPost extends Component {
     try {
       await PostApi.save(post);
       this.setState({ success: true });
+      setTimeout(() => { 
+        this.props.onFinish();
+      })
     } catch (errors) {
       this.setState({ error: true, errors: errors });
     }
@@ -57,7 +59,6 @@ export default class AuthPost extends Component {
       post_title: false,
       post_body: false
     };
-    console.log(this.state);
     this.state.invalid.post_title = !!!this.state.post.post_title;
     this.state.invalid.post_body = !!!this.state.post.post_body;
 
@@ -90,6 +91,7 @@ export default class AuthPost extends Component {
               id="post_title"
               minLength="4"
               onChange={this.handleChange}
+              value={this.state.post.post_title}
               invalid={this.state.errors.post_title}
             />
             {this.state.errors.post_title ? (
@@ -99,6 +101,7 @@ export default class AuthPost extends Component {
             <GTEditor
               id="post_body"
               onChange={this.handleChange}
+              value={this.state.post.post_body}
               invalid={this.state.invalid.post_body}
             />
             {this.state.errors.post_body ? (
@@ -108,6 +111,11 @@ export default class AuthPost extends Component {
               type="submit"
               title="Cadastrar"
               disabled={this.state.success}
+            ></Button>
+             <Button
+              type="button" danger
+              title="Cancelar"
+              onClick={this.props.onFinish}
             ></Button>
           </form>
         </article>

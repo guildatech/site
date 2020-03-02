@@ -12,7 +12,8 @@ export default class GTEditor extends Component {
 
 		this.state = {
 			data: '',
-			invalid: false
+			invalid: false,
+			id: '_' + Math.random().toString(36).substr(2, 9)
 		};
 
 		this.handleChange = this.handleChange.bind( this );
@@ -22,9 +23,14 @@ export default class GTEditor extends Component {
   componentWillReceiveProps(updatedProps) {
     if (updatedProps.invalid != this.state.invalid) {
       this.setState({ invalid: updatedProps.invalid });
-    }
+	}
+	if (updatedProps.value != this.state.value) {
+		this.setState({ data: updatedProps.value });
+	  }
   }
-
+  uniqueId () {
+    return '_' + Math.random().toString(36).substr(2, 9);
+ }
 	onEditorChange(evt) {
     this.props.onChange({
       target: {
@@ -57,8 +63,8 @@ export default class GTEditor extends Component {
       <div>
 
 				<div style={{ overflow: 'auto' }} className={this.state.invalid? 'is-invalid':''}>
-            <CKEditor
-            name={this.props.id}
+            <CKEditor onBeforeLoad={ ( CKEDITOR ) => ( CKEDITOR.disableAutoInline = true ) } 
+            name={this.state.id}
             id={this.props.id}
 						data={this.state.data}
 						onChange={this.onEditorChange}
