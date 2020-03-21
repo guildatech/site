@@ -8,7 +8,7 @@ import Alert from "../components/alert";
 import Link from "next/link";
 import "../static/style.css";
 import SessionApi from "../services/session";
-import { login, isAuthenticated } from "../services/auth";
+import Auth from "../services/auth";
 import Router from "next/router";
 
 export default class Login extends Component {
@@ -25,11 +25,13 @@ export default class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    if (isAuthenticated()) {
+  }
+  componentDidMount() {
+  
+    if (Auth.isAuthenticated()) {
       Router.push("/authenticated/");
     }
-  }
-
+}
   handleChange(event) {
     let nam = event.target.name;
     let val = event.target.value;
@@ -39,12 +41,10 @@ export default class Login extends Component {
   async authenticate(form) {
     try {
       const response = await SessionApi.login(form);
-      login(response.data.token);
-      this.setState({ success: true });
-      setTimeout(() => {
-        Router.push("/authenticated/");
-      }, 500);
-    } catch (errors) {
+      Auth.login(response.data.token);
+      this.setState({ success: true });    
+        Router.push("/authenticated/posts");
+      } catch (errors) {
       this.setState({ error: true, errors: errors });
     }
     this.setState({ loading: false });

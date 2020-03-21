@@ -8,7 +8,7 @@ export default class Posts extends Component {
   constructor() {
     super();
     this.state = {
-      posts: [],
+      pagination: { data: [] },
       loading: null
     };
     this.open = this.open.bind(this);
@@ -19,8 +19,13 @@ export default class Posts extends Component {
   async list() {
     this.setState({ loading: true });
     try {
-      PostApi.search().then(res => {
-      this.setState({ posts: [...res.data] });
+      let params = {
+        size: 10,
+        page: 1,
+        user_id: user.id
+      };
+      PostApi.pagination(params).then(res => {
+      this.setState({ pagination: res.data });
       }).finally(() => {
 
         this.setState({ loading: false });
@@ -45,7 +50,7 @@ export default class Posts extends Component {
         <Navigation />
         <Main path="Posts">
         <ol>
-        {this.state.posts.map((row, i) =>
+        {this.state.pagination.data.map((row, i) =>
           <li key={i} onClick={this.open} data-post={row.id}>
           
             <div className="post-info">

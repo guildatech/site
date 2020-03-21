@@ -5,16 +5,19 @@ import "../static/style.css";
 export default class Input extends Component {
   constructor(props) {
     super(props);
-    this.state = { invalid: false, value : null };
+    this.state = { invalid: false, value : props.value || "" };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillReceiveProps(updatedProps) {
     if (updatedProps.invalid != this.state.invalid) {
       this.setState({ invalid: updatedProps.invalid });
     }
-    if (updatedProps.value != this.state.value) {
-      this.setState({ value: updatedProps.value });
-    }
+  }
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+    this.props.onChange(event);
   }
 
   render() {
@@ -27,14 +30,16 @@ export default class Input extends Component {
             name={this.props.id}
             id={this.props.id}
             placeholder={this.props.label}
-            onChange={this.props.onChange}
+            onChange={this.handleChange}
             required={this.props.required}
+            disabled={this.props.disabled}
             minLength={this.props.minLength}
             maxLength={this.props.maxLength}
+            value={this.state.value}
             invalid={
               this.state.invalid ? this.state.invalid.toString() : "false"
             }
-            value={this.props.value}
+            
           />
           <label className="label" htmlFor={this.props.id}>
            

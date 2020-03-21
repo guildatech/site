@@ -1,8 +1,8 @@
 import api from "./api";
-export default class UserApi {
-  static async update(user) {
+export default class RegisterApi {
+  static async register(user) {
     return api
-      .put(`/user/${user.id}`, user)
+      .post("/register", user)
       .then(function(response) {
         return response;
       })

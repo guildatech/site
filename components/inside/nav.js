@@ -178,7 +178,7 @@ export default class Nav extends Component {
             background: #000;
             transition: width 0.8s;
           }
-          
+
           #menu {
             width: 30px;
             flex-grow: 0;

@@ -12,6 +12,7 @@ export default class Button extends Component {
     }
   }
   callOnClick() {
+    if(this.props.onClick)
     this.props.onClick(this.props.data);
   }
 
@@ -52,8 +53,3 @@ export default class Button extends Component {
     );
   }
 }
-Button.propTypes = {
-  title: string,
-  onClick: func,
-  type: string
-};

@@ -2,11 +2,10 @@ import { Component, Fragment } from "react";
 import Button from "../../button";
 import Input from "../../input";
 import Textarea from "../../textarea";
-import Section from "../../section";
 import Alert from "../../alert";
 import UserApi from "../../../services/user";
 
-export default class User extends Component {
+export default class Privacy extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,17 +27,16 @@ export default class User extends Component {
   handleChange(event) {
     let nam = event.target.name;
     let val = event.target.value;
-    let user = this.state.user;
-    user[nam]= val;
-    this.setState({ user: user });
-    console.log(this.state.user)
+    this.setState({ [nam]: val });
   }
 
   async save(user) {
     try {
       await UserApi.update(user);
       this.setState({ success: true });
-     
+      setTimeout(() => {
+        this.props.onFinish();
+      });
     } catch (errors) {
       this.setState({ error: true, errors: errors });
     }
@@ -104,6 +102,7 @@ export default class User extends Component {
               label="Home Page"
               type="url"
               id="homePage"
+              required={true}
               value={this.state.user.homePage}
               invalid={this.state.errors.homePage ? true : false}
               onChange={this.handleChange}
@@ -117,8 +116,7 @@ export default class User extends Component {
             <Textarea
               label="Bio"
               id="bio"
-              name="bio"
-              value={this.state.user.bio}
+              required={true}
               invalid={this.state.errors.bio ? true : false}
               onChange={this.handleChange}
             />

@@ -1,10 +1,10 @@
-import { Component, Fragment } from "react";
+import { Component, Fragment } from "react"; 
 import Button from "../components/button";
 import Input from "../components/input";
 import Navigation from "../components/navigation";
 import Section from "../components/section";
 import Alert from "../components/alert";
-import UserApi from "../services/user";
+import RegisterApi from "../services/register";
 
 export default class Register extends Component {
   constructor(props) {
@@ -13,6 +13,7 @@ export default class Register extends Component {
       name: "",
       username: "",
       password: "",
+      passwordConfirmation:"",
       email: "",
       error: null,
       success: null,
@@ -31,19 +32,36 @@ export default class Register extends Component {
 
   async register(form) {
     try {
-      await UserApi.register(form);
+      await RegisterApi.register(form);
       this.setState({ success: true });
     } catch (errors) {
       this.setState({ error: true, errors: errors });
     }
     this.setState({ loading: false });
   }
+  isInvalid() {
+    if (this.state.password !== this.state.passwordConfirmation) {
+      
+      this.setState({
+        errors: {
+          passwordConfirmation:true
+    } });
+      return true;
+    
+    
+      return false;}
+  }
 
   handleSubmit(event) {
+
+    event.preventDefault();
+    
+    if (this.isInvalid()) {
+      return; 
+    }
     if (this.state.loading) return;
     this.setState({ loading: true, success: null, error: null, errors: {} });
 
-    event.preventDefault();
     let newUser = {
       name: this.state.name,
       username: this.state.username,
@@ -121,6 +139,18 @@ export default class Register extends Component {
                 />
                 {this.state.errors.password ? (
                   <span className="validation">Essa senha não ta boa não.</span>
+                ) : null}
+                <Input
+                  required={true}
+                  minLength="8"
+                  label="Confirmação de Senha"
+                  type="password"
+                  id="passwordConfirmation"
+                  onChange={this.handleChange}
+                  invalid={this.state.errors.passwordConfirmation}
+                />
+                {this.state.errors.passwordConfirmation ? (
+                  <span className="validation">Senha e confirmação devem ser idênticas</span>
                 ) : null}
               </fieldset>
               <Button

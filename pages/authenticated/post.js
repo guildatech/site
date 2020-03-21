@@ -14,10 +14,12 @@ export default class AuthPost extends Component {
       success: null,
       loading: null,
       errors: {},
-      post: {
-        post_title: "",
-        post_body: ""
-      },
+      post: this.props.editable
+        ? this.props.editable
+        : {
+            post_title: "",
+            post_body: ""
+          },
       invalid: {
         post_title: false,
         post_body: false
@@ -28,7 +30,7 @@ export default class AuthPost extends Component {
   }
   componentDidMount() {
     if (this.props.editable && this.props.editable.id) {
-      this.setState({post:this.props.editable})
+      this.setState({ post: this.props.editable });
     }
   }
   handleChange(event) {
@@ -42,11 +44,13 @@ export default class AuthPost extends Component {
   }
   async save(post) {
     try {
-      await PostApi.save(post);
+      if (post.id) await PostApi.update(post);
+      else await PostApi.save(post);
+
       this.setState({ success: true });
-      setTimeout(() => { 
+      setTimeout(() => {
         this.props.onFinish();
-      })
+      });
     } catch (errors) {
       this.setState({ error: true, errors: errors });
     }
@@ -72,52 +76,59 @@ export default class AuthPost extends Component {
     return (
       <Fragment>
         <article>
-          <form className="novo-post-formulario " onSubmit={this.handleSubmit}>
-            {this.state.loading ? <Alert>Salvando</Alert> : null}
-            {this.state.success ? (
-              <Alert success>
-                Post bonito, post bem feito e salvo com sucesso.
-              </Alert>
-            ) : null}
-            {this.state.error ? (
-              <Alert danger>
-                {this.state.errors.general || "Algo de errado não está certo."}
-              </Alert>
-            ) : null}
-            <Input
-              label="Titulo"
-              type="text"
-              required={true}
-              id="post_title"
-              minLength="4"
-              onChange={this.handleChange}
-              value={this.state.post.post_title}
-              invalid={this.state.errors.post_title}
-            />
-            {this.state.errors.post_title ? (
-              <span className="validation">Título inválido</span>
-            ) : null}
+          {this.state.post == null ? null : (
+            <form
+              className="novo-post-formulario "
+              onSubmit={this.handleSubmit}
+            >
+              {this.state.loading ? <Alert>Salvando</Alert> : null}
+              {this.state.success ? (
+                <Alert success>
+                  Post bonito, post bem feito e salvo com sucesso.
+                </Alert>
+              ) : null}
+              {this.state.error ? (
+                <Alert danger>
+                  {this.state.errors.general ||
+                    "Algo de errado não está certo."}
+                </Alert>
+              ) : null}
+              <Input
+                label="Titulo"
+                type="text"
+                required={true}
+                id="post_title"
+                minLength="4"
+                onChange={this.handleChange}
+                value={this.state.post.post_title}
+                invalid={this.state.errors.post_title}
+              />
+              {this.state.errors.post_title ? (
+                <span className="validation">Título inválido</span>
+              ) : null}
 
-            <GTEditor
-              id="post_body"
-              onChange={this.handleChange}
-              value={this.state.post.post_body}
-              invalid={this.state.invalid.post_body}
-            />
-            {this.state.errors.post_body ? (
-              <span className="validation"></span>
-            ) : null}
-            <Button
-              type="submit"
-              title="Cadastrar"
-              disabled={this.state.success}
-            ></Button>
-             <Button
-              type="button" danger
-              title="Cancelar"
-              onClick={this.props.onFinish}
-            ></Button>
-          </form>
+              <GTEditor
+                id="post_body"
+                onChange={this.handleChange}
+                value={this.state.post.post_body}
+                invalid={this.state.invalid.post_body}
+              />
+              {this.state.errors.post_body ? (
+                <span className="validation"></span>
+              ) : null}
+              <Button
+                type="submit"
+                title="Salvar"
+                disabled={this.state.success}
+              ></Button>
+              <Button
+                type="button"
+                danger
+                title="Cancelar"
+                onClick={this.props.onFinish}
+              ></Button>
+            </form>
+          )}
         </article>
         <style jsx>{`
           div {

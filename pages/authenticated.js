@@ -1,13 +1,17 @@
 import { Component, Fragment } from "react";
 import Navigation from "../components/inside/navigation";
-import { isAuthenticated } from "../services/auth";
+import Auth from "../services/auth";
 import "../static/style.css";
+import Router from "next/router";
 
 export default class Authenticated extends Component {
   constructor() {
     super();
-    if (!isAuthenticated()) {
-      this.props.history.push("/");
+   
+  }
+  componentDidMount() {
+    if  (!Auth.isAuthenticated()){
+      Router.push("/");
     }
   }
 

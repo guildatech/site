@@ -1,4 +1,5 @@
 import api from "./api";
+import { handle } from "../components/utils/handler/errorHandler";
 export default class PostApi {
   static async search() {
     return api
@@ -12,7 +13,7 @@ export default class PostApi {
   }
   static async pagination(params) {
     return api
-      .get("/blog_posts/pagination", { params:params })
+      .get("/blog_posts/pagination", { params: params })
       .then(function(response) {
         return response;
       })
@@ -36,18 +37,14 @@ export default class PostApi {
       .then(function(response) {
         return response;
       })
-      .catch(function(exception) {
-        let errors = {};
-        if (exception && exception.response) {
-          let err = exception.response.data;
-          err.forEach(e => {
-            errors[e.field] = true;
-          });
-        } else {
-          console.log(exception);
-          errors.general = "Ocorreu um problema ao efetuar seu login";
-        }
-        throw errors;
-      });
+      .catch(handle);
+  }
+  static async update(model) {
+    return api
+      .put(`/blog_posts/${model.id}`, model)
+      .then(function(response) {
+        return response;
+      })
+      .catch(handle);
   }
 }
