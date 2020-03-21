@@ -4,17 +4,13 @@ export default class Auth {
     return this.getToken() !== null;
   }
   static getToken() {
-    if (typeof window !== 'undefined')
-      return localStorage.getItem(TOKEN_KEY);
-    else
-      return null;
+    if (typeof window !== "undefined") return localStorage.getItem(TOKEN_KEY);
+    else return null;
   }
   static login(token) {
-    if(typeof window !== 'undefined')
-    localStorage.setItem(TOKEN_KEY, token);
+    if (typeof window !== "undefined") localStorage.setItem(TOKEN_KEY, token);
   }
   static logout() {
-    if(typeof window !== 'undefined')
-    localStorage.removeItem(TOKEN_KEY);
+    if (typeof window !== "undefined") localStorage.removeItem(TOKEN_KEY);
   }
 }

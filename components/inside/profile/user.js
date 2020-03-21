@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import Button from "../../button";
 import Input from "../../input";
 import Textarea from "../../textarea";
-import Section from "../../section";
 import Alert from "../../alert";
 import UserApi from "../../../services/user";
 
@@ -18,7 +17,6 @@ export default class User extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.updateUser = this.updateUser.bind(this);
-    let user = this.state.user;
   }
   componentWillReceiveProps(updatedProps) {
     if (updatedProps.model != this.state.model) {
@@ -29,16 +27,15 @@ export default class User extends Component {
     let nam = event.target.name;
     let val = event.target.value;
     let user = this.state.user;
-    user[nam]= val;
+    user[nam] = val;
     this.setState({ user: user });
-    console.log(this.state.user)
+    console.log(this.state.user);
   }
 
   async save(user) {
     try {
       await UserApi.update(user);
       this.setState({ success: true });
-     
     } catch (errors) {
       this.setState({ error: true, errors: errors });
     }

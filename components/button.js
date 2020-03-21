@@ -1,4 +1,3 @@
-import { string, func } from "prop-types";
 import { Component } from "react";
 export default class Button extends Component {
   constructor(props) {

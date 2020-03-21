@@ -21,8 +21,7 @@ export default class Posts extends Component {
     try {
       let params = {
         size: 10,
-        page: 1,
-        user_id: user.id
+        page: 1
       };
       PostApi.pagination(params).then(res => {
       this.setState({ pagination: res.data });

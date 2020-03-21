@@ -26,7 +26,7 @@ export default class GTEditor extends Component {
 	}
 	if (updatedProps.value != this.state.value) {
 		this.setState({ data: updatedProps.value });
-	  }
+	}
   }
   uniqueId () {
     return '_' + Math.random().toString(36).substr(2, 9);
@@ -84,57 +84,3 @@ export default class GTEditor extends Component {
 }
   
 
-class EditorPreview extends Component {
-	render() {
-		return (
-			<div className="editor-preview">
-				<h2>Rendered content</h2>
-				<div dangerouslySetInnerHTML={{ __html: this.props.data }}></div>
-			</div>
-		);
-	}
-}
-
-class SourceEditor extends Component {
-	constructor( props ) {
-		super( props );
-
-		this.state = {
-			focused: false
-		};
-	}
-
-	render() {
-		var textareaValue = {};
-
-		if ( !this.state.focused ) {
-			textareaValue = {
-				value: this.props.data
-			};
-		}
-
-		return (
-			<>
-				<p>
-					<label htmlFor="editor-editor">The editor content:</label>
-				</p>
-				<p>
-					<textarea
-						id="editor-editor"
-						className="binding-editor"
-						{...textareaValue}
-						onChange={this.props.handler}
-						onFocus={ () => { this.setState( {
-								focused: true
-							} );
-						}}
-						onBlur={ () => { this.setState( {
-								focused: false
-							} );
-						}}
-					/>
-				</p>
-			</>
-		);
-	}
-}

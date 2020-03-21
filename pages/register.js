@@ -44,12 +44,13 @@ export default class Register extends Component {
       
       this.setState({
         errors: {
-          passwordConfirmation:true
-    } });
+          passwordConfirmation: true
+        }
+      });
       return true;
     
-    
-      return false;}
+    }
+      return false;
   }
 
   handleSubmit(event) {

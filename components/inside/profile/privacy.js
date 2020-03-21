@@ -17,7 +17,6 @@ export default class Privacy extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.updateUser = this.updateUser.bind(this);
-    let user = this.state.user;
   }
   componentWillReceiveProps(updatedProps) {
     if (updatedProps.model != this.state.model) {

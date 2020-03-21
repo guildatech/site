@@ -7,12 +7,10 @@ export default class AuthHome extends Component {
   constructor() {
     super();
     Auth.logout();
-
   }
   componentDidMount() {
-  
     Router.push("/login");
-}
+  }
   render() {
     return (
       <Fragment>

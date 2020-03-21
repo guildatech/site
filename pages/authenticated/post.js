@@ -63,8 +63,8 @@ export default class AuthPost extends Component {
       post_title: false,
       post_body: false
     };
-    this.state.invalid.post_title = !!!this.state.post.post_title;
-    this.state.invalid.post_body = !!!this.state.post.post_body;
+    this.state.invalid.post_title = !this.state.post.post_title;
+    this.state.invalid.post_body = !this.state.post.post_body;
 
     this.setState({ invalid: this.state.invalid });
     if (this.hasInvalid()) {

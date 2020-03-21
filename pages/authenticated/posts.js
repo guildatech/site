@@ -36,9 +36,8 @@ export default class AuthPosts extends Component {
   getUser() {
     SessionApi.get().then(res => {
       this.setState({ user: res.data });
-      console.log(res)
-      if(res)
-      this.list(res.data);
+      console.log(res);
+      if (res) this.list(res.data);
     });
   }
   async list(user) {
@@ -57,7 +56,7 @@ export default class AuthPosts extends Component {
           this.setState({ loading: false });
         });
     } catch (errors) {
-      throw errors;
+      console.log(errors);
     }
   }
   edit(data) {

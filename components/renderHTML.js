@@ -1,5 +1,5 @@
 
-import { Component, Fragment } from "react";
+import { Component } from "react";
 
 export default class RenderHTML  extends Component {
 	render() {
