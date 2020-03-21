@@ -1,13 +1,14 @@
-
-            :global(body) {
-                margin: 0;
-                padding: 0px;
-              }
+:global(body) {
+    margin: 0;
+  padding: 0px;
+ }
 
 body, html {
 	width: 100vw;
 	min-height: 90vh;
-	height: auto;
+  height: auto;
+  margin: 0;
+  padding: 0px;
 }
 
 

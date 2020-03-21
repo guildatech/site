@@ -1,9 +1,10 @@
 import Navigation from "../components/navigation";
 import Button from "../components/button";
 import Main from "../components/main";
+import Router from "next/router";
 
-const saibaMais = () => {
-  alert("hi");
+const callToAction = () => {
+  Router.push("/hackathon/covid19");
 };
 
 const Home = () => (
@@ -21,7 +22,7 @@ const Home = () => (
           <br /> inclusive <strong>Programação</strong>
         </p>
 
-        <Button onClick={saibaMais} type="button" title="Saiba Mais"></Button>
+        <Button onClick={callToAction} type="button" title="Hackathon COVID-19"></Button>
       </div>
       <div className="simbolo esticar-largura">
         <svg
