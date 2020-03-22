@@ -1,25 +1,25 @@
-import { Component } from "react";
-import Link from "next/link";
+import { Component } from 'react';
+import Link from 'next/link';
 
 export default class Nav extends Component {
   constructor(props) {
     super(props);
     const links = [
       {
-        href: "https://github.com/guildatech/",
-        label: "Github",
-        icon: "../static/icons8-github-24.png"
+        href: 'https://github.com/guildatech/',
+        label: 'Github',
+        icon: '../static/icons8-github-24.png',
       },
       {
-        href: "https://t.me/guildatech",
-        label: "Telegram",
-        icon: "../static/icons8-telegram-24.png"
+        href: 'https://t.me/guildatech',
+        label: 'Telegram',
+        icon: '../static/icons8-telegram-24.png',
       },
       {
-        href: "login",
-        label: "Login",
-        icon: "../static/user.svg"
-      }
+        href: 'login',
+        label: 'Login',
+        icon: '../static/user.svg',
+      },
     ].map(link => {
       link.key = `nav-link-${link.href}-${link.label}`;
       return link;
@@ -31,7 +31,7 @@ export default class Nav extends Component {
     return (
       <nav>
         <ul>
-          <li id="menu" className={this.props.updateMenu ? "" : "hide"}>
+          <li id="menu" className={this.props.updateMenu ? '' : 'hide'}>
             <input
               onClick={this.props.updateMenu}
               type="checkbox"
@@ -67,7 +67,7 @@ export default class Nav extends Component {
                       tooltip={label}
                       src={icon}
                       aria-label={label}
-                      style={{ width: "24px" }}
+                      style={{ width: '24px' }}
                     />
                   </a>
                 </Link>
@@ -173,7 +173,7 @@ export default class Nav extends Component {
             vertical-align: middle;
           }
           .network-links a::after {
-            content: "";
+            content: '';
             display: block;
             width: 0;
             height: 2px;

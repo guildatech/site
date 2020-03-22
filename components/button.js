@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component } from 'react';
 export default class Button extends Component {
   constructor(props) {
     super(props);
@@ -11,8 +11,7 @@ export default class Button extends Component {
     }
   }
   callOnClick() {
-    if(this.props.onClick)
-    this.props.onClick(this.props.data);
+    if (this.props.onClick) this.props.onClick(this.props.data);
   }
 
   render() {
@@ -23,7 +22,7 @@ export default class Button extends Component {
         onClick={this.callOnClick}
         disabled={this.state.disabled}
         style={this.props.style}
-       data={this.props.data}
+        data={this.props.data}
       >
         {this.props.title}
 

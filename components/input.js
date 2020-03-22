@@ -1,11 +1,11 @@
-import { Component } from "react";
-import PropTypes from "prop-types";
-import "../static/style.css";
+import { Component } from 'react';
+import PropTypes from 'prop-types';
+import '../static/style.css';
 
 export default class Input extends Component {
   constructor(props) {
     super(props);
-    this.state = { invalid: false, value : props.value || "" };
+    this.state = { invalid: false, value: props.value || '' };
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -37,12 +37,10 @@ export default class Input extends Component {
             maxLength={this.props.maxLength}
             value={this.state.value}
             invalid={
-              this.state.invalid ? this.state.invalid.toString() : "false"
+              this.state.invalid ? this.state.invalid.toString() : 'false'
             }
-            
           />
           <label className="label" htmlFor={this.props.id}>
-           
             {this.props.label}
           </label>
         </div>
@@ -63,7 +61,7 @@ export default class Input extends Component {
             width: 99%;
             outline-color: var(--guildatech-color-primary) !important;
           }
-          input[invalid="true"] {
+          input[invalid='true'] {
             outline-color: var(--guildatech-color-red) !important;
             border: 1px solid var(--guildatech-color-red);
           }
@@ -96,5 +94,5 @@ export default class Input extends Component {
 }
 Input.propTypes = {
   invalid: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
 };

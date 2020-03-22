@@ -1,16 +1,16 @@
-import { Component } from "react";
-import Link from "next/link";
-import "../static/style.css";
+import { Component } from 'react';
+import Link from 'next/link';
+import '../static/style.css';
 
 export default class Menu extends Component {
   constructor(props) {
     super(props);
     const menus = [
-      { href: "/", label: "Início" },
-      { href: "/posts", label: "Posts" },
-      { href: "/projetos", label: "Projetos" },
-      { href: "/eventos", label: "Eventos" },
-      { href: "/jobs", label: "Jobs" }
+      { href: '/', label: 'Início' },
+      { href: '/posts', label: 'Posts' },
+      { href: '/projetos', label: 'Projetos' },
+      { href: '/eventos', label: 'Eventos' },
+      { href: '/jobs', label: 'Jobs' },
     ].map(menu => {
       menu.key = `menu-${menu.href}-${menu.label}`;
       return menu;
@@ -21,7 +21,7 @@ export default class Menu extends Component {
 
   render() {
     return (
-      <aside className={this.props.menuAberto ? "aside-open" : "aside-close"}>
+      <aside className={this.props.menuAberto ? 'aside-open' : 'aside-close'}>
         <nav>
           <ol>
             {this.state.menus.map(({ key, href, label }) => (

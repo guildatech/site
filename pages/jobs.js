@@ -1,9 +1,9 @@
-import Navigation from "../components/navigation";
-import Button from "../components/button";
-import Main from "../components/main";
+import Navigation from '../components/navigation';
+import Button from '../components/button';
+import Main from '../components/main';
 
 const saibaMais = () => {
-  alert("hi");
+  alert('hi');
 };
 
 const Home = () => (

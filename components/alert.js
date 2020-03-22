@@ -1,9 +1,9 @@
-import { Component, Fragment } from "react";
+import { Component, Fragment } from 'react';
 
 export default class Alert extends Component {
   constructor(props) {
     super(props);
-    const reservedKey = ["closable", "children", "collpasible"];
+    const reservedKey = ['closable', 'children', 'collpasible'];
     let classes = [];
     Object.keys(props).forEach(key => {
       if (!reservedKey.includes(key)) {
@@ -11,7 +11,7 @@ export default class Alert extends Component {
       }
     });
 
-    this.state = { props, classNames: classes.join(" ") };
+    this.state = { props, classNames: classes.join(' ') };
   }
 
   render() {

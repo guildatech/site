@@ -1,5 +1,5 @@
-import { Component, Fragment } from "react";
-import Breadcrumb from "../components/breadcrumb";
+import { Component, Fragment } from 'react';
+import Breadcrumb from '../components/breadcrumb';
 
 export default class Main extends Component {
   constructor(props) {

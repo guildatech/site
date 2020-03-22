@@ -1,4 +1,4 @@
-import { Component, Fragment } from "react";
+import { Component, Fragment } from 'react';
 
 export default class Section extends Component {
   constructor(props) {

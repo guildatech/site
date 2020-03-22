@@ -1,8 +1,8 @@
-import api from "./api";
+import api from './api';
 export default class SessionApi {
   static async login(user) {
     return api
-      .post("/sessions", user)
+      .post('/sessions', user)
       .then(function(response) {
         return response;
       })
@@ -15,7 +15,7 @@ export default class SessionApi {
           });
         } else {
           console.log(exception);
-          errors.general = "Ocorreu um problema ao efetuar seu login";
+          errors.general = 'Ocorreu um problema ao efetuar seu login';
         }
         throw errors;
       });
@@ -23,7 +23,7 @@ export default class SessionApi {
 
   static async get(user) {
     return api
-      .get("/session", user)
+      .get('/session', user)
       .then(function(response) {
         return response;
       })

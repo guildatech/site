@@ -1,9 +1,9 @@
-import { Component, Fragment } from "react";
-import Button from "../../button";
-import Input from "../../input";
-import Textarea from "../../textarea";
-import Alert from "../../alert";
-import UserApi from "../../../services/user";
+import { Component, Fragment } from 'react';
+import Button from '../../button';
+import Input from '../../input';
+import Textarea from '../../textarea';
+import Alert from '../../alert';
+import UserApi from '../../../services/user';
 
 export default class User extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ export default class User extends Component {
       error: null,
       success: null,
       loading: null,
-      errors: {}
+      errors: {},
     };
     this.handleChange = this.handleChange.bind(this);
     this.updateUser = this.updateUser.bind(this);
@@ -56,10 +56,10 @@ export default class User extends Component {
           {this.state.success ? <Alert success>Atualizado!</Alert> : null}
           {this.state.error ? (
             <Alert danger>
-              {this.state.errors.general || "Algo de errado não está certo."}
+              {this.state.errors.general || 'Algo de errado não está certo.'}
             </Alert>
           ) : null}
-          <div style={{ width: "250px" }}>
+          <div style={{ width: '250px' }}>
             <Input
               label="Nome"
               type="text"
@@ -70,7 +70,7 @@ export default class User extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div style={{ width: "150px" }}>
+          <div style={{ width: '150px' }}>
             <Input
               label="Username"
               type="text"
@@ -82,7 +82,7 @@ export default class User extends Component {
             />
           </div>
 
-          <div style={{ width: "250px" }}>
+          <div style={{ width: '250px' }}>
             <Input
               label="E-mail"
               type="email"
@@ -96,7 +96,7 @@ export default class User extends Component {
               <span className="validation">E-mail inválido</span>
             ) : null}
           </div>
-          <div style={{ width: "250px" }}>
+          <div style={{ width: '250px' }}>
             <Input
               label="Home Page"
               type="url"
@@ -110,7 +110,7 @@ export default class User extends Component {
             ) : null}
           </div>
           <br />
-          <div style={{ width: "100%" }}>
+          <div style={{ width: '100%' }}>
             <Textarea
               label="Bio"
               id="bio"

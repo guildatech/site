@@ -1,12 +1,12 @@
-import { Component, Fragment } from "react";
-import Navigation from "../../components/inside/navigation";
-import Main from "../../components/inside/main";
-import Button from "../../components/button";
-import Post from "../authenticated/post";
-import Auth from "../../services/auth";
-import PostApi from "../../services/posts";
-import SessionApi from "../../services/session";
-import Router from "next/router";
+import { Component, Fragment } from 'react';
+import Navigation from '../../components/inside/navigation';
+import Main from '../../components/inside/main';
+import Button from '../../components/button';
+import Post from '../authenticated/post';
+import Auth from '../../services/auth';
+import PostApi from '../../services/posts';
+import SessionApi from '../../services/session';
+import Router from 'next/router';
 
 export default class AuthPosts extends Component {
   constructor() {
@@ -17,7 +17,7 @@ export default class AuthPosts extends Component {
       errors: [],
       loading: null,
       editable: null,
-      pagination: { data: [] }
+      pagination: { data: [] },
     };
     this.list = this.list.bind(this);
     this.updateView = this.updateView.bind(this);
@@ -27,7 +27,7 @@ export default class AuthPosts extends Component {
     if (Auth.isAuthenticated()) {
       this.getUser();
     } else {
-      Router.push("/");
+      Router.push('/');
     }
   }
   updateView() {
@@ -46,7 +46,7 @@ export default class AuthPosts extends Component {
       let params = {
         size: 10,
         page: 1,
-        user_id: user.id
+        user_id: user.id,
       };
       PostApi.pagination(params)
         .then(res => {
@@ -85,9 +85,9 @@ export default class AuthPosts extends Component {
                   onClick={this.updateView}
                   type="button"
                   title="Novo"
-                  style={{ padding: "5px", margin: "0px 10px 0px 5px" }}
+                  style={{ padding: '5px', margin: '0px 10px 0px 5px' }}
                 ></Button>
-                <h3 style={{ display: "inline-block" }}>Posts</h3>
+                <h3 style={{ display: 'inline-block' }}>Posts</h3>
 
                 <table>
                   <thead>
@@ -106,8 +106,8 @@ export default class AuthPosts extends Component {
                             type="button"
                             title="Editar"
                             style={{
-                              padding: "5px",
-                              margin: "0px 10px 0px 5px"
+                              padding: '5px',
+                              margin: '0px 10px 0px 5px',
                             }}
                           ></Button>
                         </td>

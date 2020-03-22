@@ -43,3 +43,12 @@ Na Guilda a gente cresce quando você cresce <3.
 ### Código de Conduta
 
 Você pode ler o nosso código de conduta na integra [aqui](CODE_OF_CONDUCT.md).
+
+
+## Mãos na massa
+
+Após desenvolver e fazer toda a sua magica não se esqueça de:
+
+1. executar o comando `npm run lint` para verificar correções de qualidade de código.
+2. executar o comando `npm run prettier` para que o código fiquei formatado para todos
+3. executar o comando `npm run build` para ficar tudo ok para a publicação
