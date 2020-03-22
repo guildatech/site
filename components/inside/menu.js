@@ -1,13 +1,12 @@
 import { Component } from "react";
 import Link from "next/link";
-import "../static/style.css";
+import "../../static/style.css";
 
 export default class Menu extends Component {
   constructor(props) {
     super(props);
     const menus = [
-      { href: "/", label: "Início" },
-      { href: "/posts", label: "Posts" },
+      { href: "./posts", label: "Posts" },
       { href: "/projetos", label: "Projetos" },
       { href: "/eventos", label: "Eventos" },
       { href: "/jobs", label: "Jobs" }
@@ -39,14 +38,14 @@ export default class Menu extends Component {
             width: 150px;
             height: 100vh;
             padding: 20px 20px 20px 0px;
-            background: #fff;
+            background: var(--guildatech-color-light) ;
             position: fixed;
             overflow: auto;
             z-index: 10;
           }
           aside ol {
             list-style: none;
-            font-size: 18px;
+            font-size: 14px;
             width: 100%;
             padding-left: 0px;
             margin-left: 0px;
@@ -57,24 +56,24 @@ export default class Menu extends Component {
           aside li {
             width: 100%;
             color: #000;
-            font-weight: 700;
-            background: white;
-            padding: 15px 10px 15px 25px;
-            margin: 5px 0px;
+            font-weight: 700; 
+            padding: 15px  25px;
+            margin: 15px 5px;
             cursor: pointer;
+            text-align:center;
+            border: 1px solid transparent;
+            transition: all 500ms ease;
           }
           aside li a {
-            color: #000;
+            color: #000
             text-decoration: none;
             cursor: pointer;
-          }
-          aside li:first-letter {
-            color: var(--guildatech-color-primary);
           }
 
           aside li:hover {
             color: white !important;
             background: var(--guildatech-color-primary);
+            border-color:white;
           }
           aside li:hover a {
             color: white !important;

@@ -1,10 +1,10 @@
-import React from "react";
 import Navigation from "../components/navigation";
 import Button from "../components/button";
 import Main from "../components/main";
+import Router from "next/router";
 
-const saibaMais = () => {
-  alert("hi");
+const callToAction = () => {
+  Router.push("/hackathon/covid19");
 };
 
 const Home = () => (
@@ -22,7 +22,7 @@ const Home = () => (
           <br /> inclusive <strong>Programação</strong>
         </p>
 
-        <Button onClick={saibaMais} type="button" title="Saiba Mais"></Button>
+        <Button onClick={callToAction} type="button" title="Hackathon COVID-19"></Button>
       </div>
       <div className="simbolo esticar-largura">
         <svg
@@ -38,7 +38,7 @@ const Home = () => (
           />
           <path
             d="M223.752 102.855C221.562 78.7551 204.504 61.2705 183.157 61.2705C168.935 61.2705 155.913 68.9238 148.586 81.1899C141.325 68.7651 128.837 61.2676 114.842 61.2676C93.4979 61.2676 76.4373 78.7522 74.2507 102.852C74.0776 103.916 73.3679 109.518 75.5257 118.655C78.6355 131.832 85.8186 143.818 96.2933 153.309L148.551 200.732L201.706 153.312C212.181 143.818 219.364 131.835 222.474 118.655C224.631 109.521 223.922 103.919 223.752 102.855Z"
-            fill="#E9B625"
+            fill="var(--guildatech-color-primary)"
           />
         </svg>
       </div>

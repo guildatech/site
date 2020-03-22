@@ -6,19 +6,14 @@ export default class Nav extends Component {
     super(props);
     const links = [
       {
-        href: "https://github.com/guildatech/",
-        label: "Github",
-        icon: "../static/icons8-github-24.png"
-      },
-      {
-        href: "https://t.me/guildatech",
-        label: "Telegram",
-        icon: "../static/icons8-telegram-24.png"
-      },
-      {
-        href: "login",
-        label: "Login",
+        href: "profile",
+        label: "Meu Perfil",
         icon: "../static/user.svg"
+      },
+      {
+        href: "logout",
+        label: "Sair",
+        icon: "../static/logout.svg"
       }
     ].map(link => {
       link.key = `nav-link-${link.href}-${link.label}`;
@@ -47,10 +42,10 @@ export default class Nav extends Component {
           <li id="gt-logo">
             <Link prefetch href="/">
               <a className="logo">
-                <img src="static/logo.png" />
+                <img src="../static/logo.png" />
 
                 <span>
-                  Guilda<strong>Tech</strong>
+                  <strong>GT</strong>
                 </span>
               </a>
             </Link>
@@ -147,7 +142,11 @@ export default class Nav extends Component {
             justify-content: space-between;
           }
           nav > ul {
-            padding: 4px 16px;
+            display: flex;
+            justify-content: space-between;
+            margin: 0px !important;
+            padding: 25px 15px 5px;
+            background: var(--guildatech-color-primary);
           }
           li {
             display: flex;
@@ -165,8 +164,7 @@ export default class Nav extends Component {
           }
           a.logo strong {
             font-weight: 700;
-            color: var(--guildatech-color-primary);
-            border-bottom: 2px solid black;
+            color: var(--guildatech-color-light);
           }
           a.logo img {
             height: 30px;
@@ -180,11 +178,7 @@ export default class Nav extends Component {
             background: #000;
             transition: width 0.8s;
           }
-          /*  @media (min-width:768px){
-      #menu {
-      display: none;
-      }
-      }*/
+
           #menu {
             width: 30px;
             flex-grow: 0;

@@ -1,7 +1,7 @@
 import { Component, Fragment } from "react";
-import Nav from "../components/nav";
-import Menu from "../components/menu";
-import Head from "../components/head";
+import Nav from "./nav";
+import Menu from "./menu";
+import Head from "./head";
 
 export default class Navigation extends Component {
   constructor() {

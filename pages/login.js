@@ -1,22 +1,64 @@
-import React, { Component, Fragment } from "react";
+import { Component, Fragment } from "react";
 import Button from "../components/button";
 import Input from "../components/input";
 import Head from "../components/head";
 import Nav from "../components/nav";
+import Section from "../components/section";
+import Alert from "../components/alert";
 import Link from "next/link";
 import "../static/style.css";
+import SessionApi from "../services/session";
+import Auth from "../services/auth";
+import Router from "next/router";
 
 export default class Login extends Component {
   constructor() {
     super();
-    this.state = { usuario: "", senha: "" };
-  }
+    this.state = {
+      email: "",
+      password: "",
+      error: null,
+      success: null,
+      loading: null,
+      errors: {}
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
-  formularioPreenchimento = event => {
+  }
+  componentDidMount() {
+  
+    if (Auth.isAuthenticated()) {
+      Router.push("/authenticated/");
+    }
+}
+  handleChange(event) {
     let nam = event.target.name;
     let val = event.target.value;
     this.setState({ [nam]: val });
-  };
+  }
+
+  async authenticate(form) {
+    try {
+      const response = await SessionApi.login(form);
+      Auth.login(response.data.token);
+      this.setState({ success: true });    
+        Router.push("/authenticated/posts");
+      } catch (errors) {
+      this.setState({ error: true, errors: errors });
+    }
+    this.setState({ loading: false });
+  }
+  handleSubmit(event) {
+    if (this.state.loading) return;
+    this.setState({ loading: true, success: null, error: null, errors: {} });
+    event.preventDefault();
+    let user = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    this.authenticate(user);
+  }
 
   render() {
     return (
@@ -24,21 +66,44 @@ export default class Login extends Component {
         <Head title="GuildaTech" />
         <Nav />
         <main>
-          <section>
+          <Section>
             <h1> Acesse sua conta</h1>
-            <form className="login-formulario ">
+            <form className="login-formulario " onSubmit={this.handleSubmit}>
+              {this.state.loading ? <Alert>Autenticando</Alert> : null}
+              {this.state.success ? (
+                <Alert success>Acertô miseravi</Alert>
+              ) : null}
+              {this.state.error ? (
+                <Alert danger>
+                  {this.state.errors.general ||
+                    "Algo de errado não está certo."}
+                </Alert>
+              ) : null}
+              <br />
               <Input
-                label="Usuário"
-                type="text"
-                id="usuario"
-                onChange={this.formularioPreenchimento}              />
+                label="E-mail"
+                type="email"
+                id="email"
+                required={true}
+                invalid={this.state.errors.email ? true : false}
+                onChange={this.handleChange}
+              />
+              {this.state.errors.email ? (
+                <span className="validation">E-mail não encontrado</span>
+              ) : null}
               <Input
                 label="Senha"
+                required={true}
                 type="password"
-                id="senha"
-                onChange={this.formularioPreenchimento}              />
-              <span className="recuperar-senha">
-                <Link href="recuperarSenha">
+                id="password"
+                invalid={this.state.errors.password}
+                onChange={this.handleChange}
+              />
+              {this.state.errors.password ? (
+                <span className="validation">Senha inválida</span>
+              ) : null}
+              <span className="forgot-password">
+                <Link href="forgotPassword">
                   <a>Não lembra sua senha? </a>
                 </Link>
               </span>
@@ -46,13 +111,12 @@ export default class Login extends Component {
               <Button type="submit" title="Acessar"></Button>
             </form>
 
-
-             <span className="cadastrar">
-                <Link href="cadastrar">
-                  <a>É a sua primeira vez aqui? </a>
-                </Link>
-              </span>
-          </section>
+            <span className="register">
+              <Link href="register">
+                <a>É a sua primeira vez aqui? </a>
+              </Link>
+            </span>
+          </Section>
 
           <style jsx>{`
             :global(body) {
@@ -68,7 +132,7 @@ export default class Login extends Component {
             }
 
             h1:first-letter {
-              color: var(--cor-primaria);
+              color: var(--guildatech-color-primary);
             }
 
             a.logo {
@@ -90,16 +154,6 @@ export default class Login extends Component {
               align-items: center;
             }
 
-            section {
-              border: 1px solid var(--cor-primaria);
-              min-height: 450px;
-              min-width: 350px;
-              box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.45);
-              transistion: all 300ms;
-              padding: 10px 15px;
-              positin: relative;
-            }
-
             form {
               position: relative;
             }
@@ -115,38 +169,42 @@ export default class Login extends Component {
               main {
                 height: auto;
               }
-              section {
-                position: relative;
-                border: 0px;
-                box-shadow: none;
-              }
             }
-            .recuperar-senha {
+            .forgot-password {
               font-size: 12px;
               padding: 5px;
-              margin-bottom:10px;              
+              margin-bottom: 10px;
               align-self: normal;
               margin-left: 35px;
             }
-           .recuperar-senha a {
-            color: #616060;
+            .forgot-password a {
+              color: #616060;
             }
 
-            .cadastrar {
+            .register {
               position: relative;
               display: flex;
               justify-content: center;
-              align-items: center;              
-              font-size:18px; 
-              text-align:center;
-              padding: 10px 40px ;
+              align-items: center;
+              font-size: 18px;
+              text-align: center;
+              padding: 10px 40px;
               font-weight: 700;
               margin: 25px 15px;
-              border-bottom: 2px solid var(--cor-primaria);
-             
+              border-bottom: 2px solid var(--guildatech-color-primary);
             }
-            .cadastrar a {
-               color: black;
+            .register a {
+              color: black;
+            }
+            .validation {
+              display: flex;
+              align-items: flex-end;
+              justify-content: flex-end;
+              width: 100%;
+              padding: 0px 50px;
+              font-weight: 700;
+              font-size: 14px;
+              color: var(--guildatech-color-red);
             }
           `}</style>
         </main>

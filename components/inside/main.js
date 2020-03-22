@@ -1,5 +1,4 @@
 import { Component, Fragment } from "react";
-import Breadcrumb from "../components/breadcrumb";
 
 export default class Main extends Component {
   constructor(props) {
@@ -10,15 +9,15 @@ export default class Main extends Component {
     return (
       <Fragment>
         <main>
-          <Breadcrumb path={this.props.path} />
           <section>{this.props.children}</section>
         </main>
         <style jsx>{`
           main {
-            padding-left: 220px;
+            padding-left: 160px;
           }
           main > section {
             display: flex;
+            width: calc(100% - 10px);
             flex-direction: row;
           }
 

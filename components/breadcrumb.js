@@ -1,7 +1,4 @@
-import React, { Component, Fragment } from "react";
-import Link from "next/link";
-import { string } from "prop-types";
-
+import { Component } from "react";
 export default class Breadcrumb extends Component {
   constructor(props) {
     super(props);
