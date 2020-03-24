@@ -1,9 +1,6 @@
 import { Component, Fragment } from 'react';
-import Button from '../components/button';
-import Input from '../components/input';
+import {Button, Input, Alert, Section} from '@guildatech/guildatech-components';
 import Navigation from '../components/navigation';
-import Section from '../components/section';
-import Alert from '../components/alert';
 import RegisterApi from '../services/register';
 
 export default class Register extends Component {

@@ -1,7 +1,7 @@
 import { Component, Fragment } from 'react';
 import Navigation from '../../components/inside/navigation';
 import Main from '../../components/inside/main';
-import Button from '../../components/button';
+import {Button} from '@guildatech/guildatech-components';
 import Post from '../authenticated/post';
 import Auth from '../../services/auth';
 import PostApi from '../../services/posts';
