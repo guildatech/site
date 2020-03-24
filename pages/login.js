@@ -1,5 +1,10 @@
 import { Component, Fragment } from 'react';
-import {Button, Input, Alert, Section} from '@guildatech/guildatech-components';
+import {
+  Button,
+  Input,
+  Alert,
+  Section,
+} from '@guildatech/guildatech-components';
 import Head from '../components/head';
 import Nav from '../components/nav';
 import Link from 'next/link';

@@ -1,5 +1,5 @@
 import { Component, Fragment } from 'react';
-import {Breadcrumb} from '@guildatech/guildatech-components';
+import { Breadcrumb } from '@guildatech/guildatech-components';
 
 export default class Main extends Component {
   constructor(props) {

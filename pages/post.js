@@ -1,7 +1,7 @@
 import { Component, Fragment } from 'react';
 import Navigation from '../components/navigation';
 import Main from '../components/main';
-import {Button, RenderHTML} from '@guildatech/guildatech-components';
+import { Button, RenderHTML } from '@guildatech/guildatech-components';
 import PostApi from '../services/posts';
 import { withRouter } from 'next/router';
 import Router from 'next/router';

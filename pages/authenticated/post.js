@@ -1,5 +1,10 @@
 import { Component, Fragment } from 'react';
-import {Button, Input, GTEditor, Alert} from '@guildatech/guildatech-components'
+import {
+  Button,
+  Input,
+  GTEditor,
+  Alert,
+} from '@guildatech/guildatech-components';
 import PostApi from '../../services/posts';
 
 export default class AuthPost extends Component {
