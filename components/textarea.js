@@ -1,6 +1,6 @@
-import { Component } from "react";
-import PropTypes from "prop-types";
-import "../static/style.css";
+import { Component } from 'react';
+import PropTypes from 'prop-types';
+import '../static/style.css';
 
 export default class Textarea extends Component {
   constructor(props) {
@@ -28,12 +28,12 @@ export default class Textarea extends Component {
             minLength={this.props.minLength}
             maxLength={this.props.maxLength}
             invalid={
-              this.state.invalid ? this.state.invalid.toString() : "false"
+              this.state.invalid ? this.state.invalid.toString() : 'false'
             }
             value={this.props.value}
           />
           <label className="label" htmlFor={this.props.id}>
-             {this.props.label}
+            {this.props.label}
           </label>
         </div>
 
@@ -53,7 +53,7 @@ export default class Textarea extends Component {
             width: 99%;
             outline-color: var(--guildatech-color-primary) !important;
           }
-          textarea[invalid="true"] {
+          textarea[invalid='true'] {
             outline-color: var(--guildatech-color-red) !important;
             border: 1px solid var(--guildatech-color-red);
           }
@@ -86,5 +86,5 @@ export default class Textarea extends Component {
 }
 Textarea.propTypes = {
   invalid: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
 };

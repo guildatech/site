@@ -1,9 +1,9 @@
-import axios from "axios";
-import Auth from "./auth";
+import axios from 'axios';
+import Auth from './auth';
 const API_URL = process.env.API_URL;
 
 const api = axios.create({
-  baseURL: API_URL
+  baseURL: API_URL,
 });
 
 api.interceptors.request.use(async config => {
@@ -22,11 +22,11 @@ axios.interceptors.response.use(
       return Promise.reject({
         error: {
           message: error.message,
-          stack: error.stack
+          stack: error.stack,
         },
-        response: error.response
+        response: error.response,
       });
     } else return Promise.reject(error);
-  }
+  },
 );
 export default api;

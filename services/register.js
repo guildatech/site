@@ -1,8 +1,8 @@
-import api from "./api";
+import api from './api';
 export default class RegisterApi {
   static async register(user) {
     return api
-      .post("/register", user)
+      .post('/register', user)
       .then(function(response) {
         return response;
       })
@@ -15,7 +15,7 @@ export default class RegisterApi {
           });
         } else {
           console.log(exception);
-          errors.general = "Ocorreu um problema ao efetuar seu login";
+          errors.general = 'Ocorreu um problema ao efetuar seu login';
         }
         throw errors;
       });

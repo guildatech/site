@@ -1,19 +1,19 @@
-import { Component, Fragment } from "react";
-import Navigation from "../../components/inside/navigation";
-import Main from "../../components/inside/main";
-import Auth from "../../services/auth";
-import "../../static/style.css";
-import SessionApi from "../../services/session";
-import User from "../../components/inside/profile/user";
-import Router from "next/router";
+import { Component, Fragment } from 'react';
+import Navigation from '../../components/inside/navigation';
+import Main from '../../components/inside/main';
+import Auth from '../../services/auth';
+import '../../static/style.css';
+import SessionApi from '../../services/session';
+import User from '../../components/inside/profile/user';
+import Router from 'next/router';
 
 export default class Profile extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentStep: "#about",
-      user: null
+      currentStep: '#about',
+      user: null,
     };
     this.showStep = this.showStep.bind(this);
   }
@@ -21,7 +21,7 @@ export default class Profile extends Component {
     if (Auth.isAuthenticated()) {
       this.getUser();
     } else {
-      Router.push("/");
+      Router.push('/');
     }
   }
   getUser() {
@@ -44,7 +44,7 @@ export default class Profile extends Component {
                 <li
                   data-target="#about"
                   onClick={this.showStep}
-                  className={this.state.currentStep == "#about" ? "active" : ""}
+                  className={this.state.currentStep == '#about' ? 'active' : ''}
                 >
                   <span>Sobre Mim</span>
                 </li>
@@ -52,7 +52,7 @@ export default class Profile extends Component {
                   data-target="#socialMedial"
                   onClick={this.showStep}
                   className={
-                    this.state.currentStep == "#socialMedial" ? "active" : ""
+                    this.state.currentStep == '#socialMedial' ? 'active' : ''
                   }
                 >
                   <span>Midias Sociais</span>
@@ -61,7 +61,7 @@ export default class Profile extends Component {
                   data-target="#privacy"
                   onClick={this.showStep}
                   className={
-                    this.state.currentStep == "#privacy" ? "active" : ""
+                    this.state.currentStep == '#privacy' ? 'active' : ''
                   }
                 >
                   <span>Privacidade e Segurança</span>
@@ -69,19 +69,19 @@ export default class Profile extends Component {
               </ol>
               <ul>
                 <li
-                  className={this.state.currentStep == "#about" ? "show" : ""}
+                  className={this.state.currentStep == '#about' ? 'show' : ''}
                 >
                   <User model={this.state.user}></User>
                 </li>
                 <li
                   className={
-                    this.state.currentStep == "#socialMedial" ? "show" : ""
+                    this.state.currentStep == '#socialMedial' ? 'show' : ''
                   }
                 >
                   Em desenvolvimento
                 </li>
                 <li
-                  className={this.state.currentStep == "#privacy" ? "show" : ""}
+                  className={this.state.currentStep == '#privacy' ? 'show' : ''}
                 >
                   Em desenvolvimento
                 </li>

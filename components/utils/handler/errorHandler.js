@@ -7,7 +7,7 @@ export const handle = exception => {
     });
   } else {
     console.log(exception);
-    errors.general = "Ocorreu um problema ao efetuar seu login";
+    errors.general = 'Ocorreu um problema ao efetuar seu login';
   }
   throw errors;
 };

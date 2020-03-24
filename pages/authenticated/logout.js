@@ -1,7 +1,7 @@
-import { Component, Fragment } from "react";
-import Navigation from "../../components/inside/navigation";
-import Auth from "../../services/auth";
-import Router from "next/router";
+import { Component, Fragment } from 'react';
+import Navigation from '../../components/inside/navigation';
+import Auth from '../../services/auth';
+import Router from 'next/router';
 
 export default class AuthHome extends Component {
   constructor() {
@@ -9,7 +9,7 @@ export default class AuthHome extends Component {
     Auth.logout();
   }
   componentDidMount() {
-    Router.push("/login");
+    Router.push('/login');
   }
   render() {
     return (

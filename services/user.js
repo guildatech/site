@@ -1,4 +1,4 @@
-import api from "./api";
+import api from './api';
 export default class UserApi {
   static async update(user) {
     return api
@@ -15,7 +15,7 @@ export default class UserApi {
           });
         } else {
           console.log(exception);
-          errors.general = "Ocorreu um problema ao efetuar seu login";
+          errors.general = 'Ocorreu um problema ao efetuar seu login';
         }
         throw errors;
       });

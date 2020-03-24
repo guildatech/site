@@ -1,7 +1,7 @@
-import { Component, Fragment } from "react";
-import Nav from "../components/nav";
-import Menu from "../components/menu";
-import Head from "../components/head";
+import { Component, Fragment } from 'react';
+import Nav from '../components/nav';
+import Menu from '../components/menu';
+import Head from '../components/head';
 
 export default class Navigation extends Component {
   constructor() {
@@ -22,7 +22,7 @@ export default class Navigation extends Component {
         <Nav updateMenu={this.updateMenu} />
         <Menu menuAberto={this.state.menuAberto} />
         <div
-          className={this.state.menuAberto ? "overlay show" : "overlay"}
+          className={this.state.menuAberto ? 'overlay show' : 'overlay'}
         ></div>
 
         <style jsx>{`

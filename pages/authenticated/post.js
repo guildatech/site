@@ -1,9 +1,9 @@
-import { Component, Fragment } from "react";
-import Button from "../../components/button";
-import Input from "../../components/input";
-import GTEditor from "../../components/editor";
-import Alert from "../../components/alert";
-import PostApi from "../../services/posts";
+import { Component, Fragment } from 'react';
+import Button from '../../components/button';
+import Input from '../../components/input';
+import GTEditor from '../../components/editor';
+import Alert from '../../components/alert';
+import PostApi from '../../services/posts';
 
 export default class AuthPost extends Component {
   constructor(props) {
@@ -17,13 +17,13 @@ export default class AuthPost extends Component {
       post: this.props.editable
         ? this.props.editable
         : {
-            post_title: "",
-            post_body: ""
+            post_title: '',
+            post_body: '',
           },
       invalid: {
         post_title: false,
-        post_body: false
-      }
+        post_body: false,
+      },
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -61,7 +61,7 @@ export default class AuthPost extends Component {
     event.preventDefault();
     this.state.invalid = {
       post_title: false,
-      post_body: false
+      post_body: false,
     };
     this.state.invalid.post_title = !this.state.post.post_title;
     this.state.invalid.post_body = !this.state.post.post_body;
@@ -90,7 +90,7 @@ export default class AuthPost extends Component {
               {this.state.error ? (
                 <Alert danger>
                   {this.state.errors.general ||
-                    "Algo de errado não está certo."}
+                    'Algo de errado não está certo.'}
                 </Alert>
               ) : null}
               <Input

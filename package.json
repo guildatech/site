@@ -2,11 +2,11 @@
   "name": "guildatech-site",
   "scripts": {
     "dev": "next",
-    "build": "npm run format && npm run lint && next build",
+    "build": "npm run prettier && npm run lint && next build",
     "start": "next start",
     "export": "next export",
     "deploy": "npm run build && npm run export",
-    "format": "prettier --write pages/*/** && prettier --write components/*/*/**  && prettier --write components/*/** && prettier --write services/**",
+    "prettier": "prettier --single-quote --trailing-comma all --write 'pages/**/*.js' 'components/**/*.js' 'services/**/*.js'",
     "lint": "eslint --fix --ext .js pages components services",
     "lint:watch": "esw -w --fix services"
   },

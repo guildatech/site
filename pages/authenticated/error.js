@@ -1,5 +1,5 @@
-import { Component, Fragment } from "react";
-import Navigation from "../../components/inside/navigation";
+import { Component, Fragment } from 'react';
+import Navigation from '../../components/inside/navigation';
 
 export default class AuthHome extends Component {
   constructor() {

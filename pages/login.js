@@ -1,37 +1,35 @@
-import { Component, Fragment } from "react";
-import Button from "../components/button";
-import Input from "../components/input";
-import Head from "../components/head";
-import Nav from "../components/nav";
-import Section from "../components/section";
-import Alert from "../components/alert";
-import Link from "next/link";
-import "../static/style.css";
-import SessionApi from "../services/session";
-import Auth from "../services/auth";
-import Router from "next/router";
+import { Component, Fragment } from 'react';
+import Button from '../components/button';
+import Input from '../components/input';
+import Head from '../components/head';
+import Nav from '../components/nav';
+import Section from '../components/section';
+import Alert from '../components/alert';
+import Link from 'next/link';
+import '../static/style.css';
+import SessionApi from '../services/session';
+import Auth from '../services/auth';
+import Router from 'next/router';
 
 export default class Login extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       error: null,
       success: null,
       loading: null,
-      errors: {}
+      errors: {},
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
   componentDidMount() {
-  
     if (Auth.isAuthenticated()) {
-      Router.push("/authenticated/");
+      Router.push('/authenticated/');
     }
-}
+  }
   handleChange(event) {
     let nam = event.target.name;
     let val = event.target.value;
@@ -42,9 +40,9 @@ export default class Login extends Component {
     try {
       const response = await SessionApi.login(form);
       Auth.login(response.data.token);
-      this.setState({ success: true });    
-        Router.push("/authenticated/posts");
-      } catch (errors) {
+      this.setState({ success: true });
+      Router.push('/authenticated/posts');
+    } catch (errors) {
       this.setState({ error: true, errors: errors });
     }
     this.setState({ loading: false });
@@ -55,7 +53,7 @@ export default class Login extends Component {
     event.preventDefault();
     let user = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
     this.authenticate(user);
   }
@@ -76,7 +74,7 @@ export default class Login extends Component {
               {this.state.error ? (
                 <Alert danger>
                   {this.state.errors.general ||
-                    "Algo de errado não está certo."}
+                    'Algo de errado não está certo.'}
                 </Alert>
               ) : null}
               <br />

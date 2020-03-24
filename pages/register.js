@@ -1,24 +1,24 @@
-import { Component, Fragment } from "react"; 
-import Button from "../components/button";
-import Input from "../components/input";
-import Navigation from "../components/navigation";
-import Section from "../components/section";
-import Alert from "../components/alert";
-import RegisterApi from "../services/register";
+import { Component, Fragment } from 'react';
+import Button from '../components/button';
+import Input from '../components/input';
+import Navigation from '../components/navigation';
+import Section from '../components/section';
+import Alert from '../components/alert';
+import RegisterApi from '../services/register';
 
 export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      username: "",
-      password: "",
-      passwordConfirmation:"",
-      email: "",
+      name: '',
+      username: '',
+      password: '',
+      passwordConfirmation: '',
+      email: '',
       error: null,
       success: null,
       loading: null,
-      errors: {}
+      errors: {},
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,24 +41,21 @@ export default class Register extends Component {
   }
   isInvalid() {
     if (this.state.password !== this.state.passwordConfirmation) {
-      
       this.setState({
         errors: {
-          passwordConfirmation: true
-        }
+          passwordConfirmation: true,
+        },
       });
       return true;
-    
     }
-      return false;
+    return false;
   }
 
   handleSubmit(event) {
-
     event.preventDefault();
-    
+
     if (this.isInvalid()) {
-      return; 
+      return;
     }
     if (this.state.loading) return;
     this.setState({ loading: true, success: null, error: null, errors: {} });
@@ -67,7 +64,7 @@ export default class Register extends Component {
       name: this.state.name,
       username: this.state.username,
       password: this.state.password,
-      email: this.state.email
+      email: this.state.email,
     };
 
     this.register(newUser);
@@ -87,7 +84,7 @@ export default class Register extends Component {
               {this.state.error ? (
                 <Alert danger>
                   {this.state.errors.general ||
-                    "Algo de errado não está certo."}
+                    'Algo de errado não está certo.'}
                 </Alert>
               ) : null}
               <br />
@@ -151,7 +148,9 @@ export default class Register extends Component {
                   invalid={this.state.errors.passwordConfirmation}
                 />
                 {this.state.errors.passwordConfirmation ? (
-                  <span className="validation">Senha e confirmação devem ser idênticas</span>
+                  <span className="validation">
+                    Senha e confirmação devem ser idênticas
+                  </span>
                 ) : null}
               </fieldset>
               <Button

@@ -1,9 +1,9 @@
-import api from "./api";
-import { handle } from "../components/utils/handler/errorHandler";
+import api from './api';
+import { handle } from '../components/utils/handler/errorHandler';
 export default class PostApi {
   static async search() {
     return api
-      .get("/blog_posts")
+      .get('/blog_posts')
       .then(function(response) {
         return response;
       })
@@ -13,7 +13,7 @@ export default class PostApi {
   }
   static async pagination(params) {
     return api
-      .get("/blog_posts/pagination", { params: params })
+      .get('/blog_posts/pagination', { params: params })
       .then(function(response) {
         return response;
       })
@@ -33,7 +33,7 @@ export default class PostApi {
   }
   static async save(model) {
     return api
-      .post("/blog_posts", model)
+      .post('/blog_posts', model)
       .then(function(response) {
         return response;
       })

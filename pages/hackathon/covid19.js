@@ -1,6 +1,6 @@
-import "../../static/style.css";
+import '../../static/style.css';
 
-import Head from "../../components/head";
+import Head from '../../components/head';
 
 const HackathonCovid = () => (
   <div>
@@ -37,7 +37,7 @@ const HackathonCovid = () => (
             </ul>
           </p>
           <p>
-            Esses projetos serão julgados por todas as pessoas membras da{" "}
+            Esses projetos serão julgados por todas as pessoas membras da{' '}
             <strong>
               <em>#GuildaTech</em>
             </strong>
@@ -59,13 +59,13 @@ const HackathonCovid = () => (
           </p>
 
           <p>
-            Qualquer dúvida, entre na Guilda Tech pelo Telegram ou Twitter{" "}
+            Qualquer dúvida, entre na Guilda Tech pelo Telegram ou Twitter{' '}
             <small>(links no rodapé).</small>
           </p>
 
           <p>
             Caso queira, procure uma pessoa para seu grupo na GuildaTech ou na
-            hashtag{" "}
+            hashtag{' '}
             <strong>
               <em>#HackathonGuildaTech</em>
             </strong>
@@ -75,7 +75,7 @@ const HackathonCovid = () => (
         <article>
           <h3>Regras</h3>
           <div>
-            {" "}
+            {' '}
             <ol>
               <li>
                 Os projetos poderão ser desenvolvidos usando qualquer
@@ -95,7 +95,7 @@ const HackathonCovid = () => (
                 grupo.
               </li>
               <li>
-                Os projetos deverão ser submetidos enviando um e-mail para{" "}
+                Os projetos deverão ser submetidos enviando um e-mail para{' '}
                 <a href="mailto:guildatech@juliocampos.com.br">
                   <strong>
                     <em>guildatech@juliocampos.com.br</em>
@@ -133,7 +133,7 @@ const HackathonCovid = () => (
       </footer>
     </section>
     <style jsx>{`
-      @import url("https://fonts.googleapis.com/css?family=Bungee+Shade|Orbitron&display=swap");
+      @import url('https://fonts.googleapis.com/css?family=Bungee+Shade|Orbitron&display=swap');
       .esticar-largura {
         align-items: stretch;
         align-items: center;
@@ -143,7 +143,7 @@ const HackathonCovid = () => (
         min-height: 95vh;
       }
       section * {
-        font-family: "Orbitron", sans-serif;
+        font-family: 'Orbitron', sans-serif;
       }
       header {
         min-height: 200px;
@@ -187,14 +187,14 @@ const HackathonCovid = () => (
       }
       footer a:hover {
         color: var(--guildatech-color-primary);
-        font-family: "Bungee Shade", cursive;
+        font-family: 'Bungee Shade', cursive;
         font-size: 28px;
       }
       footer lil {
         position: relative;
       }
       footer a::after {
-        content: "";
+        content: '';
         display: block;
         position: absolute;
         width: 0;
@@ -216,10 +216,10 @@ const HackathonCovid = () => (
         padding: 2px !important;
       }
       h4 {
-        font-family: "Orbitron", sans-serif;
+        font-family: 'Orbitron', sans-serif;
       }
       h2 {
-        font-family: "Bungee Shade", cursive !important;
+        font-family: 'Bungee Shade', cursive !important;
         font-size: 78px;
       }
       strong,
@@ -228,7 +228,7 @@ const HackathonCovid = () => (
       }
       strong::after,
       em::after {
-        content: "";
+        content: '';
         position: absolute;
         display: block;
         width: 0;
