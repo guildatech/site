@@ -1,10 +1,12 @@
 import { Component, Fragment } from 'react';
-import Button from '../components/button';
-import Input from '../components/input';
+import {
+  Button,
+  Input,
+  Alert,
+  Section,
+} from '@guildatech/guildatech-components';
 import Head from '../components/head';
 import Nav from '../components/nav';
-import Section from '../components/section';
-import Alert from '../components/alert';
 import Link from 'next/link';
 import '../static/style.css';
 import SessionApi from '../services/session';

@@ -1,5 +1,5 @@
 import Navigation from '../components/navigation';
-import Button from '../components/button';
+import { Button } from '@guildatech/guildatech-components';
 import Main from '../components/main';
 
 const saibaMais = () => {

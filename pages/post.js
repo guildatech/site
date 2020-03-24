@@ -1,10 +1,9 @@
 import { Component, Fragment } from 'react';
 import Navigation from '../components/navigation';
 import Main from '../components/main';
-import Button from '../components/button';
+import { Button, RenderHTML } from '@guildatech/guildatech-components';
 import PostApi from '../services/posts';
 import { withRouter } from 'next/router';
-import RenderHTML from '../components/renderHTML';
 import Router from 'next/router';
 
 class Post extends Component {

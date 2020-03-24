@@ -1,8 +1,10 @@
 import { Component, Fragment } from 'react';
-import Button from '../../button';
-import Input from '../../input';
-import Textarea from '../../textarea';
-import Alert from '../../alert';
+import {
+  Button,
+  Input,
+  Textarea,
+  Alert,
+} from '@guildatech/guildatech-components';
 import UserApi from '../../../services/user';
 
 export default class User extends Component {

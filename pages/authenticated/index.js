@@ -6,8 +6,10 @@ import Router from 'next/router';
 export default class AuthHome extends Component {
   constructor() {
     super();
-    if (Auth.isAuthenticated()) {
-      Router.push('/authenticated/');
+  }
+  componentDidMount() {
+    if (!Auth.isAuthenticated()) {
+      Router.push('/');
     }
   }
 
