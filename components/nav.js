@@ -6,14 +6,19 @@ export default class Nav extends Component {
     super(props);
     const links = [
       {
-        href: 'https://github.com/guildatech/',
+        href: '//github.com/guildatech/',
         label: 'Github',
         icon: '../static/icons8-github-24.png',
       },
       {
-        href: 'https://t.me/guildatech',
+        href: '//t.me/guildatech',
         label: 'Telegram',
         icon: '../static/icons8-telegram-24.png',
+      },
+      {
+        href: '//twitter.com/guildatech',
+        label: 'Twitter',
+        icon: '../static/icons8-twitter-24.png',
       },
       {
         href: 'login',
@@ -58,7 +63,7 @@ export default class Nav extends Component {
           <ul className="network-links">
             {this.state.links.map(({ key, href, label, icon }) => (
               <li key={key}>
-                <Link href={href}>
+                <Link href={href} prefetch="false">
                   <a>
                     <img
                       aria-label={label}
