@@ -47,4 +47,12 @@ export default class PostApi {
       })
       .catch(handle);
   }
+  static async delete(model) {
+    return api
+      .delete(`/blog_posts/${model.id}`, model)
+      .then(function(response) {
+        return response;
+      })
+      .catch(handle);
+  }
 }

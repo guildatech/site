@@ -6,10 +6,10 @@ export default class Menu extends Component {
   constructor(props) {
     super(props);
     const menus = [
-      { href: './posts', label: 'Posts' },
-      { href: '/projetos', label: 'Projetos' },
-      { href: '/eventos', label: 'Eventos' },
-      { href: '/jobs', label: 'Jobs' },
+      { href: './authenticated/posts', label: 'Posts' },
+      { href: './authenticated/projetos', label: 'Projetos' },
+      { href: './authenticated/eventos', label: 'Eventos' },
+      { href: './authenticated/jobs', label: 'Jobs' },
     ].map(menu => {
       menu.key = `menu-${menu.href}-${menu.label}`;
       return menu;

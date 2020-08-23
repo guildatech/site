@@ -29,8 +29,10 @@ export default class AuthPost extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.delete = this.delete.bind(this);
   }
   componentDidMount() {
+    console.log(   this.state.post)
     if (this.props.editable && this.props.editable.id) {
       this.setState({ post: this.props.editable });
     }
@@ -48,6 +50,20 @@ export default class AuthPost extends Component {
     try {
       if (post.id) await PostApi.update(post);
       else await PostApi.save(post);
+
+      this.setState({ success: true });
+      setTimeout(() => {
+        this.props.onFinish();
+      });
+    } catch (errors) {
+      this.setState({ error: true, errors: errors });
+    }
+    this.setState({ loading: false });
+  }
+  async delete () {
+    let post = this.state.post;
+    try {
+     await PostApi.delete(post);
 
       this.setState({ success: true });
       setTimeout(() => {
@@ -123,11 +139,12 @@ export default class AuthPost extends Component {
                 title="Salvar"
                 disabled={this.state.success}
               ></Button>
-              <Button
+              
+             <Button
                 type="button"
                 danger
-                title="Cancelar"
-                onClick={this.props.onFinish}
+                title="Deletar"
+                onClick={this.delete}
               ></Button>
             </form>
           )}

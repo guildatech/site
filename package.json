@@ -2,11 +2,10 @@
   "name": "guildatech-site",
   "scripts": {
     "dev": "next",
-    "build": "npm run prettier && npm run lint && next build",
+    "build": "npm run lint && next build",
     "start": "next start",
     "export": "next export",
     "deploy": "npm run build && npm run export",
-    "prettier": "prettier --single-quote --trailing-comma all --write 'pages/**/*.js' 'components/**/*.js' 'services/**/*.js'",
     "lint": "eslint --fix --ext .js pages components services",
     "lint:watch": "esw -w --fix services"
   },
@@ -16,16 +15,16 @@
     "css-loader": "^3.4.2",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^1.7.0",
-    "next": "^9.3.2",
+    "next": "^9.5.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router": "^5.1.2",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.3"
   },
   "licence": "MIT",
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && eslint"
+      "pre-commit": " eslint"
     }
   },
   "proxy": "http://api.teste.com.br/v1",

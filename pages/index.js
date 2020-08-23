@@ -22,11 +22,11 @@ const Home = () => (
           <br /> inclusive <strong>Programação</strong>
         </p>
 
-        <Button
+        {/* <Button
           onClick={callToAction}
           type="button"
           title="Hackathon COVID-19"
-        ></Button>
+        ></Button> */}
       </div>
       <div className="simbolo esticar-largura">
         <svg

@@ -57,7 +57,7 @@ export default class Posts extends Component {
               <li key={i} onClick={this.open} data-post={row.id}>
                 <div className="post-info">
                   <span className="post-author">
-                    {row.user.name.toLowerCase()}
+                    {row.user? row.user.name.toLowerCase() : ""}
                   </span>
                   <span className="post-date">
                     {this.toLocaleDateString(row.created_at)}

@@ -8,6 +8,7 @@ export default class Menu extends Component {
     const menus = [
       { href: '/', label: 'Início' },
       { href: '/posts', label: 'Posts' },
+      { href: '/podcast', label: 'Podcast' },
       { href: '/projetos', label: 'Projetos' },
       { href: '/eventos', label: 'Eventos' },
       { href: '/jobs', label: 'Jobs' },
