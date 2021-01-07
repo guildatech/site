@@ -1,16 +1,16 @@
-import Navigation from '../components/navigation';
-import { Button } from '@guildatech/guildatech-components';
+// import Navigation from '../components/navigation';
 import Main from '../components/main';
-import Router from 'next/router';
+import Head from '../components/head';
+import Nav from '../components/nav';
+import Player from '../components/player';
 
-const callToAction = () => {
-  Router.push('/hackathon/covid19');
-};
 
 const Home = () => (
   <div>
-    <Navigation />
+    {/* <Navigation /> */}
 
+    <Head title="GuildaTech" />
+    <Nav />
     <Main>
       <div className="capa esticar-largura">
         <h3 className="titulo">
@@ -21,6 +21,10 @@ const Home = () => (
           de todos os tipos são tratados,
           <br /> inclusive <strong>Programação</strong>
         </p>
+        <p>Estamos em construção enquanto isso você pode ouvir nosso podcast</p>
+        <Player />
+
+
 
         {/* <Button
           onClick={callToAction}

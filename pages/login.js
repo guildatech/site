@@ -103,7 +103,7 @@ export default class Login extends Component {
                 <span className="validation">Senha inválida</span>
               ) : null}
               <span className="forgot-password">
-                <Link href="forgotPassword">
+                <Link href="forgot">
                   <a>Não lembra sua senha? </a>
                 </Link>
               </span>

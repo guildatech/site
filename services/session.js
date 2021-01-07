@@ -31,4 +31,14 @@ export default class SessionApi {
         return exception;
       });
   }
+  static async forgot(user) {
+    return api
+      .post('/forgot', user)
+      .then(function(response) {
+        return response;
+      })
+      .catch(function(exception) {
+        return exception;
+      });
+  }
 }
