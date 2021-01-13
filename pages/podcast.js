@@ -1,7 +1,6 @@
 import { Component, Fragment } from 'react';
 import Navigation from '../components/navigation';
 import Main from '../components/main';
-import Router from 'next/router';
 
 export default class Podcasts extends Component {
   constructor() {

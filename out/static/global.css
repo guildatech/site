@@ -1,0 +1,56 @@
+:global(body) {
+    margin: 0;
+  padding: 0px;
+ }
+
+body, html {
+	width: 100vw;
+	min-height: 90vh;
+  height: auto;
+  margin: 0;
+  padding: 0px;
+}
+
+
+* {
+	box-sizing: border-box;
+}
+
+body > div:first-child{
+	margin-top: -15px
+}
+
+a {
+	
+            text-decoration: none;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    padding: 15px 5px;
+  }
+
+  h1:first-letter {
+    color: var(--guildatech-color-primary);
+  }
+
+  [class^="cke_"] {
+    border-color: var(--guildatech-color-primary) !important;
+}
+.is-invalid [class^="cke_"] {
+  border-color: var(--guildatech-color-red) !important;
+}
+.cke_resizer {
+  border-color: transparent var(--guildatech-color-primary) transparent transparent !important
+}
+.is-invalid .cke_resizer {
+  border-color: transparent var(--guildatech-color-red) transparent transparent !important
+}
+.cke_combo_arrow ,
+.cke_button_arrow{
+border-left: 3px solid transparent !important;
+border-right: 3px solid transparent !important;
+}
