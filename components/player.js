@@ -2,44 +2,60 @@ import { Component, Fragment } from 'react';
 
 
 export default class Player extends Component {
-  constructor() {
-    super();
-    this.state = {audio:null, label:'Play'};
-    this.playAudio = this.playAudio.bind(this);
+   constructor(props) {
+    super(props);
+    this.audio = new Audio('../static/quem_programa_0001_Will.mp3');
+    this.state = {play: false, audio : this.audio, time: 0.00, duration:0.00};
+
+  }
+  componentDidMount() {
+    this.audio.addEventListener('ended', () => this.setState({ play: false }));
+    this.audio.addEventListener('timeupdate', () => this.setState({ time: this.convertDuration(this.audio.currentTime) }));
+  }
+
+  componentWillUnmount() {  
+      this.audio.addEventListener('ended', () => this.setState({ play: false }));
+    this.audio.addEventListener('timeupdate', () => {
+     this.setState({ time: this.convertDuration(this.audio.currentTime) });
+     if(!isNaN(this.audio.duration) && this.state.audio == 0) {   
+    this.setState( {duration: this.convertDuration(this.audio.duration)});
+     }
+    });
 
   }
 
-  playAudio() {
-    let audioEl;
-    if (this.state.audio) {
-      audioEl = this.state.audio;
-    } else {
-
-      audioEl = document.getElementsByClassName("audio-element")[0];
-      this.setState({ audio: audioEl });
-    }
-    if (audioEl.paused) {
-      this.setState({ label: 'Pause' });
-      audioEl.play();
-    } else {
-      this.setState({ label: 'Play' });
-      audioEl.pause();
-    }
+   convertDuration =(seconds) =>{
+   let sec = Math.floor( seconds );    
+   let min = Math.floor( sec / 60 );
+    min = min >= 10 ? min : '0' + min;    
+    sec = Math.floor( sec % 60 );
+    sec = sec >= 10 ? sec : '0' + sec;    
+    return min + '.' + sec;
+}
+ togglePlay = () => {
+    this.setState({ play: !this.state.play }, () => {
+      this.state.play ? this.audio.play() : this.audio.pause();
+    });
+  if(!isNaN(this.audio.duration)) {
+    this.setState( {duration: this.convertDuration(this.audio.duration)});
+  }
+  
+  
+  }
+ handleChange = (event) => {
+     this.audio.currentTime = event.target.value;
+     this.setState({ time: this.convertDuration(this.audio.currentTime) });
+  
   }
   render() {
     return (
       <Fragment>
         <div className="podcast-label">
 
-        <button className="button" onClick={this.playAudio}>
-          <span>{ this.state.label }</span>
-        </button>
-        <p>Episódio <b>0001</b> <br/>
-        Convidado <b>Will </b></p>
-        </div>
-        <audio className="audio-element">
-          <source src="../static/quem_programa_0001_Will.mp3"></source>
-         </audio>
+         <button onClick={this.togglePlay}>{this.state.play ? 'Pause' : 'Play'}</button>
+      <ul>
+      <li> {this.state.time } -> {this.state.duration } </li>
+      </ul>
 
         <style jsx>{`
           .overlay {
