@@ -53,6 +53,7 @@ export default class Player extends Component {
         <div className="podcast-label">
 
          <button onClick={this.togglePlay}>{this.state.play ? 'Pause' : 'Play'}</button>
+        </div>
       <ul>
       <li> {this.state.time } -> {this.state.duration } </li>
       </ul>
