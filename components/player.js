@@ -4,16 +4,18 @@ import { Component, Fragment } from 'react';
 export default class Player extends Component {
    constructor(props) {
     super(props);
-    this.audio = new Audio('../static/quem_programa_0001_Will.mp3');
     this.state = {play: false, audio : this.audio, time: 0.00, duration:0.00};
-
+       
   }
+    
   componentDidMount() {
+    this.audio = document.getElementsByClassName("audio-element")[0];
     this.audio.addEventListener('ended', () => this.setState({ play: false }));
     this.audio.addEventListener('timeupdate', () => this.setState({ time: this.convertDuration(this.audio.currentTime) }));
   }
 
-  componentWillUnmount() {  
+  componentWillUnmount() { 
+    this.audio = document.getElementsByClassName("audio-element")[0]; 
       this.audio.addEventListener('ended', () => this.setState({ play: false }));
     this.audio.addEventListener('timeupdate', () => {
      this.setState({ time: this.convertDuration(this.audio.currentTime) });
@@ -23,7 +25,6 @@ export default class Player extends Component {
     });
 
   }
-
    convertDuration =(seconds) =>{
    let sec = Math.floor( seconds );    
    let min = Math.floor( sec / 60 );
@@ -57,6 +58,10 @@ export default class Player extends Component {
       <ul>
       <li> {this.state.time } -> {this.state.duration } </li>
       </ul>
+       
+       <audio className="audio-element">	
+          <source src={this.props.url}></source>	
+         </audio>
 
         <style jsx>{`
           .overlay {
